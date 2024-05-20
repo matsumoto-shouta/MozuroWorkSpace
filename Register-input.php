@@ -16,7 +16,7 @@
     <p>メールアドレス</p>
     <input type="label" name="mail">
     <p>パスワード</p>
-    <input type="label" name="pass">
+    <input type="password" name="pass">
 
     <button type="submit">登録</button>
     </from>
