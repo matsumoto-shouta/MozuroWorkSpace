@@ -32,7 +32,7 @@
                 $_SESSION['UserData'] = [
                     'user_ID' => $id,
                     'user_name' => $_POST['user_name'],
-                   'mail' => $_POST['mail'],
+                   'mail' => $_POST['mail']
                 ];
                 
                 echo 'ユーザー情報を更新しました';
