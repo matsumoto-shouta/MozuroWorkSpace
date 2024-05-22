@@ -11,5 +11,4 @@
 <p>初めての方はこちらから</p>
 <p>　　　　　↓　　　　　</p>
 <a href="Register-input.php"><button>新規登録</button></a>
-</div>
-<?php require 'footer.php'; ?>    
+</div> 
