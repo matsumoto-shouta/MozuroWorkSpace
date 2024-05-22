@@ -77,5 +77,6 @@
 
         //https://zenn.dev/clevercure/articles/cc9e24c652553b//
         //50行目まで//
+    ?>
 </body>
 </html>
