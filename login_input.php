@@ -1,4 +1,3 @@
-<?php require 'header.php'; ?>
 <div class="main">
 <link rel="stylesheet" href="css/login_input.css">
 <img class="main-image" src="image/wakadan.jpg">
