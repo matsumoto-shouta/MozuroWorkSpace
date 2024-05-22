@@ -50,6 +50,6 @@
             echo 'メールアドレスが重複しています';
         }
         ?>
-
+<a href="login_input.php"><button>ログイン画面に戻る</button></a>
 </body>
 </html>
