@@ -50,8 +50,30 @@
 
             if($new_image_width > $resize_width){
                 $resize_image_p = imagecreatetruecolor($resize_width,$resize_height);
+
+                if($extensiton === 'jpg'){
+                    $resize_image = imagecreatefromjpeg($new_image_path);
+                    imagecopyresampled($resize_image_p, $resize_image, 0, 0, 0, 0, $resize_width, $resize_height, $new_image_width, $new_image_height);
+                    imagejpeg($resize_image_p, $new_image_path);
+                }else{
+                    imagealphablending($resize_image_p,false);
+                    imagesavealpha($resize_image_p,true);
+                    $resize_image = imagecreatefrompng($new_image_path);
+                    imagecopyresampled($resize_image_p, $resize_image, 0, 0, 0, 0, $resize_width, $resize_height, $new_image_width, $new_image_height);
+                    imagepng($resize_image_p, $new_image_path, 9);
+                }
+
+                imagedestroy($resize_image_p);
             }
+
+            chmod($new_image_path, 0644);
+
+        }else{
+            throw new RuntimeException('画像を保存できませんでした');
         }
+
+        header('Location: compleat.php');
+        exit;
 
         //https://zenn.dev/clevercure/articles/cc9e24c652553b//
         //50行目まで//
