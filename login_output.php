@@ -14,7 +14,7 @@ $pdo = new PDO($connect,USER,PASS);
 $sql = $pdo->prepare('select * from UserData where user_name=?');
 $sql->execute([$_POST['login']]);
 foreach($sql as $row){
-    if($_POST["password"]==$row['password']){
+    if($_POST["password"]==$row['pass']){
     $_SESSION['UserData']=[
         // rowの中身にsql（DB）の内容が入ってる。rowの中身をセッションのそれぞれの所に入れてる。
         'id'=>$row['user_ID'],'name'=>$row['user_name'],'mail'=>$row['mail'],
@@ -23,7 +23,7 @@ foreach($sql as $row){
 }
 if(isset($_SESSION['UserData'])){
     echo '<p class="log">いらっしゃいませ、',$_SESSION['UserData']['name'],'さん。</p>';
-//    echo '<a href="shohin_top.php" id="my"><button>商品一覧へ</button></a>';
+    echo '<a href="login_input.php" id="my"><button>ログイン画面へ</button></a>';
 
 }else{
     echo '<p class="log">ログイン名またはパスワードが違います。</p>';
