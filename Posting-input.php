@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 <?php $csrf = base64_encode( openssl_random_pseudo_bytes( 32 ) ); ?>
 <?php $_SESSION['csrf'] = $csrf; ?>
-<?php require 'DB-connect'; ?>
+<?php require 'DB-connect.php'; ?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
