@@ -1,0 +1,12 @@
+.backgroundcolor{
+    background-image: linear-gradient(to right bottom, #2cd158, #0fd476, #00d790, #14d9a7, #36daba, #48ded3, #66e1e5, #87e3f2, #afe8ff, #d4edff, #eff4ff, #ffffff);
+}
+
+form{
+        background: rgba(255, 255, 255, 0.75);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.29);
+}
