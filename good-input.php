@@ -1,12 +1,8 @@
-<?php
-// データベース接続
-$pdo = new PDO('mysql:host=localhost;dbname=insta_clone', 'username', 'password');
-
-// 投稿を取得
-$stmt = $pdo->prepare("SELECT * FROM posts");
+<?php require 'DB-connect.php'; ?>
+<?php// 投稿を取得
+$stmt = $pdo->prepare("SELECT * FROM Upload");
 $stmt->execute();
 $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
 
 <!DOCTYPE html>
