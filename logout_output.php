@@ -19,4 +19,3 @@ if(isset($_SESSION['UserData'])){
 
 </div>
     <a href="login_input.php" id="my"><button>ログインへ戻る</button></a>
-<?php require 'footer.php'; ?>
