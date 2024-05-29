@@ -23,7 +23,7 @@ foreach($sql as $row){
 }
 if(isset($_SESSION['UserData'])){
     echo '<p class="log">いらっしゃいませ、',$_SESSION['UserData']['name'],'さん。</p>';
-    echo '<a href="login_input.php" id="my"><button>ログイン画面へ</button></a>';
+    echo '<a href="home.php" id="my"><button>ホーム画面へ</button></a>';
 
 }else{
     echo '<p class="log">ログイン名またはパスワードが違います。</p>';
@@ -33,4 +33,3 @@ if(isset($_SESSION['UserData'])){
     echo '<p class="log">ログイン名またはパスワードを入力してください。</p>';
     echo '<a href="login_input.php" id="my"><button>ログイン画面へ</button></a>';
 }
-?>
