@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<?php require 'header.php'; ?>
+
 <link rel="stylesheet" href="css/logout-output.css">
     <div class="flex">
 <figure class="image">
