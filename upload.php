@@ -1,5 +1,5 @@
 <?php session_start();?>
-<?php require 'db-connect.php'; ?>
+<?php require 'DB-connect.php'; ?>
 <?php
 
 

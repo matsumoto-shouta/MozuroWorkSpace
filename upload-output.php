@@ -1,5 +1,5 @@
 <?php session_start();?>
-<?php require 'db-connect.php'; ?>
+<?php require 'DB-connect.php'; ?>
 <?php
 // 投稿データの取得
 $sql = "SELECT up_ID, user_ID, caption, picture_ID FROM Upload";
