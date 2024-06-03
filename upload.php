@@ -1,4 +1,5 @@
 <?php
+ob_start(); 
 require 'DB-connect.php'; // データベース接続をインクルード
 
 // アップロードフォルダの指定
@@ -63,4 +64,5 @@ if ($uploadOk == 0) {
 // アップロード後に画像ギャラリーページにリダイレクト
 header('Location: index.php');
 exit();
+ob_end_flush(); // 出力バッファをフラッシュして終了
 ?>
