@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2>画像アップロードフォーム</h2>
-    <form action="upload-output.php" method="post" enctype="multipart/form-data">
+    <form action="NO-DB-upload-output.php" method="post" enctype="multipart/form-data">
         <label for="file">画像を選択してください:</label>
         <input type="file" name="file" id="file">
         <input type="submit" value="アップロード">

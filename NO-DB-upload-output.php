@@ -55,6 +55,6 @@ if ($uploadOk == 0) {
 }
 
 // アップロード後に画像ギャラリーページにリダイレクト
-header('Location: upload-input.php');
+header('Location: NO-DB-upload-input.php');
 exit();
 ?>
