@@ -1,5 +1,5 @@
 <?php
-require 'db-connect.php'; // データベース接続をインクルード
+require 'DB-connect.php'; // データベース接続をインクルード
 
 // アップロードフォルダの指定
 $target_dir = "uploads/";

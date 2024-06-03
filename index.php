@@ -16,7 +16,7 @@
     <h2>画像ギャラリー</h2>
     <div class="gallery">
         <?php
-        require 'db-connect.php'; // データベース接続をインクルード
+        require 'DB-connect.php'; // データベース接続をインクルード
 
         // 画像情報をデータベースから取得
         $sql = "SELECT picture_name FROM Picture";
