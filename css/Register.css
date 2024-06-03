@@ -1,12 +1,77 @@
-.backgroundcolor{
-    background-image: linear-gradient(to right bottom, #2cd158, #0fd476, #00d790, #14d9a7, #36daba, #48ded3, #66e1e5, #87e3f2, #afe8ff, #d4edff, #eff4ff, #ffffff);
-}
+body{
+    background-color: aquamarine;
+    }
 
-form{
-        background: rgba(255, 255, 255, 0.75);
+/*白い枠*/
+.all{
+    background: rgba(255, 255, 255, 0.75);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.29);
+
 }
+
+.form-group {
+    display:flex;
+    flex-flow: column;
+  }
+  .content {
+    padding:1em;
+    margin:0.5em auto;
+    width:50%;
+  }
+
+/*textboxの装飾*/
+  .form-group {
+	position: relative;
+	width: 80%;
+	margin: 40px 3%;
+}
+.form-group input[type='text'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #aaaaaa;
+	border: none;
+	border-bottom: 2px solid #1b2538;
+	background: transparent;
+}
+.content input[type='text']:focus {
+	border-bottom: 2px solid #da3c41;   
+	outline: none;
+}
+.form-group input[type='password'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #aaaaaa;
+	border: none;
+	border-bottom: 2px solid #1b2538;
+	background: transparent;
+}
+.content input[type='password']:focus {
+	border-bottom: 2px solid #da3c41;
+	outline: none;
+}
+
+/*ボタンデザイン*/
+.btn {
+    color: #000;
+    background-color: #80f580;
+    border-bottom: 5px solid #ccc100;
+  }
+  
+  .btn:hover {
+    margin-top: 3px;
+    color: #000;
+    background: #fff20a;
+    border-bottom: 2px solid #ccc100;
+  }
