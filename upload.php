@@ -62,7 +62,7 @@ if ($uploadOk == 0) {
 }
 
 // アップロード後に画像ギャラリーページにリダイレクト
-header('Location: index.php');
+header('Location: home.php');
 exit();
 ob_end_flush(); // 出力バッファをフラッシュして終了
 ?>

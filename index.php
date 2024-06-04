@@ -12,26 +12,5 @@
         <input type="file" name="file" id="file">
         <input type="submit" value="アップロード">
     </form>
-
-    <h2>画像ギャラリー</h2>
-    <div class="gallery">
-        <?php
-        require 'DB-connect.php'; // データベース接続をインクルード
-
-        // 画像情報をデータベースから取得
-        $sql = "SELECT picture_name FROM Picture";
-        $stmt = $pdo->query($sql);
-
-        if ($stmt->rowCount() > 0) {
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                echo "<div class='gallery-item'>";
-                echo "<img src='" . htmlspecialchars($row['picture_name']) . "' alt='アップロードされた画像'>";
-                echo "</div>";
-            }
-        } else {
-            echo "ギャラリーに画像がありません。";
-        }
-        ?>
-    </div>
 </body>
 </html>
