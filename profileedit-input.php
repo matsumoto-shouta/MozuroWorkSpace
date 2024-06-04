@@ -22,4 +22,3 @@ echo '</table>';
 echo '<input type="submit" value="変更">';
 echo '</form>';
 ?>
-qqq
