@@ -1,12 +1,21 @@
 body{
-    background-color: aquamarine;
+    background-color: rgb(255, 255, 255);
     }
+
+h1{
+  text-align: center;
+  margin-top:48px;
+  margin-bottom: 48px;
+  width: auto;
+}
 
 /*白い枠*/
 .all{
+    margin-left:10%;
+    margin-right:10%;
     background: rgba(255, 255, 255, 0.75);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.29);
@@ -25,15 +34,18 @@ body{
 
 /*textboxの装飾*/
   .form-group {
-	position: relative;
+	display: flex;
+  flex-flow: column;
 	width: 80%;
 	margin: 40px 3%;
+  justify-content: center;
 }
 .form-group input[type='text'] {
 	font: 15px/24px sans-serif;
 	box-sizing: border-box;
 	width: 100%;
 	padding: 0.3em;
+  margin-bottom:48px;
 	transition: 0.3s;
 	letter-spacing: 1px;
 	color: #aaaaaa;
@@ -50,6 +62,7 @@ body{
 	box-sizing: border-box;
 	width: 100%;
 	padding: 0.3em;
+  margin-bottom:48px;
 	transition: 0.3s;
 	letter-spacing: 1px;
 	color: #aaaaaa;
@@ -64,14 +77,42 @@ body{
 
 /*ボタンデザイン*/
 .btn {
-    color: #000;
-    background-color: #80f580;
-    border-bottom: 5px solid #ccc100;
-  }
-  
-  .btn:hover {
-    margin-top: 3px;
-    color: #000;
-    background: #fff20a;
-    border-bottom: 2px solid #ccc100;
-  }
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+	text-align: center;
+	text-decoration: none;
+	width: 120px;
+	margin: auto;
+	padding: 1rem 4rem;
+	font-weight: bold;
+	background: #eee;
+	color: #27acd9;
+	border-radius: 100vh;
+	position: relative;
+	transition: 0.5s;
+}
+.btn::before {
+	content: '';
+	position: absolute;
+	top: calc(50% - 2px);
+	right: 1em;
+	transform: translateY(calc(-50% - 2px)) rotate(45deg);
+	width: 10px;
+	height: 1px;
+	background: #27acd9;
+}
+.btn::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 1em;
+	transform: translateY(-50%);
+	width: 50px;
+	height: 1px;
+	background-color: #27acd9;
+}
+.btn:hover {
+	background: #d4eef7;
+	color: #27acd9;
+}
