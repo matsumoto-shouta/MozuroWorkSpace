@@ -1,5 +1,6 @@
 <?php
-require 'db-connect.php'; // データベース接続をインクルード
+ob_start(); 
+require 'DB-connect.php'; // データベース接続をインクルード
 
 // アップロードフォルダの指定
 $target_dir = "uploads/";
@@ -61,6 +62,7 @@ if ($uploadOk == 0) {
 }
 
 // アップロード後に画像ギャラリーページにリダイレクト
-header('Location: index.php');
+header('Location: home.php');
 exit();
+ob_end_flush(); // 出力バッファをフラッシュして終了
 ?>

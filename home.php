@@ -12,6 +12,25 @@
         <div id="div">   
             <h1>ホーム画面</h1>
         <a href="mypage.php" id="hi">マイページへ</a>
+        <h2>画像ギャラリー</h2>
+    <div class="gallery">
+        <?php
+
+        // 画像情報をデータベースから取得
+        $sql = "SELECT picture_name FROM Picture";
+        $stmt = $pdo->query($sql);
+
+        if ($stmt->rowCount() > 0) {
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                echo "<div class='gallery-item'>";
+                echo "<img src='" . htmlspecialchars($row['picture_name']) . "' alt='アップロードされた画像'>";
+                echo "</div>";
+            }
+        } else {
+            echo "ギャラリーに画像がありません。";
+        }
+        ?>
+    </div>
         <br>
         <a href="logout_input.php" id="hi">ログアウトへ</a>
         </div>
