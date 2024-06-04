@@ -5,7 +5,7 @@
 </head>
 <body>
 <form action="profileedit-input" method="post">
-        <button type="submit">プロフィール編集</button>
+        <button type="submit">プロフィールを編集</button>
 
     <form action="home.php" method="post">
         <button type="submit">ホームに戻る</button>
