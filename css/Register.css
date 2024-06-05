@@ -5,14 +5,15 @@ body{
 h1{
   text-align: center;
   margin-top:48px;
-  margin-bottom: 48px;
+  margin-bottom: 24px;
   width: auto;
 }
 
 /*白い枠*/
 .all{
-    margin-left:10%;
-    margin-right:10%;
+    margin-left:20%;
+    margin-right:20%;
+	text-align: center;
     background: rgba(255, 255, 255, 0.75);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
@@ -35,7 +36,7 @@ h1{
 /*textboxの装飾*/
   .form-group {
 	display: flex;
-  flex-flow: column;
+	flex-flow: column;
 	width: 80%;
 	margin: 40px 3%;
   justify-content: center;
@@ -45,10 +46,10 @@ h1{
 	box-sizing: border-box;
 	width: 100%;
 	padding: 0.3em;
-  margin-bottom:48px;
+	margin-bottom:48px;
 	transition: 0.3s;
 	letter-spacing: 1px;
-	color: #aaaaaa;
+	color: #000000;
 	border: none;
 	border-bottom: 2px solid #1b2538;
 	background: transparent;
@@ -62,10 +63,10 @@ h1{
 	box-sizing: border-box;
 	width: 100%;
 	padding: 0.3em;
-  margin-bottom:48px;
+	margin-bottom:48px;
 	transition: 0.3s;
 	letter-spacing: 1px;
-	color: #aaaaaa;
+	color: #000000;
 	border: none;
 	border-bottom: 2px solid #1b2538;
 	background: transparent;
@@ -82,8 +83,9 @@ h1{
     align-items: center;
 	text-align: center;
 	text-decoration: none;
-	width: 120px;
+	width: 200px;
 	margin: auto;
+	margin-bottom:24px;
 	padding: 1rem 4rem;
 	font-weight: bold;
 	background: #eee;
@@ -115,4 +117,14 @@ h1{
 .btn:hover {
 	background: #d4eef7;
 	color: #27acd9;
+}
+
+.result{
+	text-align: center;
+    margin-top:48px;
+    margin-bottom: 24px;
+	margin-left: auto;
+	margin-right: auto;
+    width: auto;
+	font-size: large;
 }
