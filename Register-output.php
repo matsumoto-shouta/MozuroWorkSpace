@@ -8,7 +8,7 @@
     <title>ユーザー登録(出力)</title>
 </head>
 <body>
-    
+    <div class="result">
     <?php
         $pdo = new PDO($connect, USER, PASS);
         if(isset($_SESSION['UserData'])){
@@ -50,6 +50,7 @@
             echo 'メールアドレスが重複しています';
         }
         ?>
-<a href="login_input.php"><button>ログイン画面に戻る</button></a>
+    </div>
+<a href="login_input.php"><button class="btn">ログイン画面に戻る</button></a>
 </body>
 </html>
