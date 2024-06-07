@@ -1,10 +1,10 @@
 <?php session_start(); ?>
-<?php require 'DB-connect.php'; ?>
+<?php require 'db-connect.php'; ?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/Register.css">
     <title>ユーザー登録(出力)</title>
 </head>
 <body>
@@ -51,6 +51,6 @@
         }
         ?>
     </div>
-<a href="login_input.php"><button class="btn">ログイン画面に戻る</button></a>
+<a href="login_input.php"><button class="btn2">ログイン画面に戻る</button></a>
 </body>
 </html>
