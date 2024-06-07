@@ -18,12 +18,7 @@
     <div class="gallery">
     <?php
     if(isset($_SESSION['UserData']['id'])){
-    echo "セッションにユーザーIDが保存されています: " . htmlspecialchars($_SESSION['UserData']['id']);
-    } else {
-    echo "セッションにユーザーIDが保存されていません。";
-    }
-    ?>
-        <?php
+    //echo "セッションにユーザーIDが保存されています: " . htmlspecialchars($_SESSION['UserData']['id']);
 
         // 画像情報をデータベースから取得
         //$sql1 = "SELECT picture_name FROM Picture";
@@ -47,8 +42,11 @@
             }
         } else {
             echo "ギャラリーに画像がありません。";
-        }
-        ?>
+        }}
+        else {
+            echo "ログインしてください";
+            }
+            ?>
     </div>
         <br>
         <a href="logout_input.php" id="hi">ログアウトへ</a>
