@@ -1,6 +1,6 @@
 <?php
 session_start();
-ob_start();
+ob_start(); 
 require 'DB-connect.php'; // データベース接続をインクルード
 
 // セッションで設定したIDを使いやすい変数に入れてる
@@ -58,19 +58,18 @@ if ($uploadOk == 0) {
 } else {
     // ファイルをアップロード
     if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-        // データベースにファイルパスを保存
-        $pic = $pdo->prepare("INSERT INTO Picture (picture_name) VALUES (?)");
+        //1. データベースにファイルパスを保存
+        $pic = $pdo->prepare("INSERT INTO Picture (picture_ID,picture_name) VALUES (null,?)");
 
-        if ($pic) {
+        //2. 投稿したuo_IDとユーザー人のIDとキャプションを保存
+        $up = $pdo->prepare("INSERT INTO Upload (up_ID,user_ID, caption) VALUES (null,?, ?)");
+
+        if ($pic && $up) {
             $pdo->beginTransaction();
             try {
                 $pic->execute([$target_file]);
-                $picture_ID = $pdo->lastInsertId(); // picture_IDを取得
-
-                // 投稿したユーザーID、キャプション、picture_ID、comments_ID（仮にNULL）、good_ID（仮にNULL）を保存
-                $up = $pdo->prepare("INSERT INTO Upload (user_ID, caption, picture_ID, comments_ID, good_ID) VALUES (?, ?, ?, ?, ?)");
-                $up->execute([$user_id, $caption, $picture_ID, null, null]);
-
+                $uploadID = $pdo->lastInsertId();
+                $up->execute([$user_id, $caption]);
                 $pdo->commit();
                 echo "ファイル ". htmlspecialchars($original_filename) . " がアップロードされました。<br>";
             } catch (Exception $e) {

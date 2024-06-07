@@ -1,6 +1,6 @@
 <?php
 session_start();
-ob_start();
+ob_start(); 
 require 'DB-connect.php'; // データベース接続をインクルード
 
 // セッションで設定したIDを使いやすい変数に入れてる
@@ -67,9 +67,9 @@ if ($uploadOk == 0) {
                 $pic->execute([$target_file]);
                 $picture_ID = $pdo->lastInsertId(); // picture_IDを取得
 
-                // 投稿したユーザーID、キャプション、picture_ID、comments_ID（仮にNULL）、good_ID（仮にNULL）を保存
-                $up = $pdo->prepare("INSERT INTO Upload (user_ID, caption, picture_ID, comments_ID, good_ID) VALUES (?, ?, ?, ?, ?)");
-                $up->execute([$user_id, $caption, $picture_ID, null, null]);
+                // 投稿したユーザーIDとキャプション、picture_IDを保存
+                $up = $pdo->prepare("INSERT INTO Upload (user_ID, picture_ID, caption) VALUES (?, ?, ?)");
+                $up->execute([$user_id, $picture_ID, $caption]);
 
                 $pdo->commit();
                 echo "ファイル ". htmlspecialchars($original_filename) . " がアップロードされました。<br>";
