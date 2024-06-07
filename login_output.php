@@ -1,6 +1,6 @@
 <?php session_start(); ?>
-<?php require 'DB-connect.php'; ?>
-<link rel="stylesheet" href="css/login_output.css?v=1.0.1">
+<?php require 'db-connect.php'; ?>
+<link rel="stylesheet" href="css/Login.css">
 <div class="flex">
 <figure class="image"><img 
 src="image/rogo.jpg">
