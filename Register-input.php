@@ -12,11 +12,9 @@
     <form action="Register-output.php" method="post">
 
     <div class="form-group">
-        <div class="label">
             <input type="text" class="content" name="user_name" placeholder="ユーザーネーム">
             <input type="text" class="content" name="mail" placeholder="メールアドレス">
             <input type="password" class="content" name="pass" placeholder="パスワード">
-        </div>
     </div>
     <button class="btn" type="submit">登録</button>
     </form>

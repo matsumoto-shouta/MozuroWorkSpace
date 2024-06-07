@@ -1,14 +1,11 @@
-<div class="main">
-<link rel="stylesheet" href="css/login_input.css">
+<div class="all">
+<link rel="stylesheet" href="css/Login.css">
 <img class="main-image" src="image/wakadan.jpg">
-<form action="login_output.php" method="post">
-    <p class="main-a">ユーザー名　　　<input type="text" name="login"><br></p>
-    <p class="main-a">_____________________________________</p>
-    <p class="main-a">パスワード　　　<input type="password" name="password"><br></p>
-    <p class="main-a">_____________________________________</p>
-    <input type="submit" value="ログイン">
+<form class="form-group" action="login_output.php" method="post">
+    <input type="text"  class="content" name="login" placeholder="ユーザーネーム">
+    <input type="password" class="content" name="password" placeholder="パスワード">
+    <button class="btn" type="submit">ログイン</button>
 </form>
-<p>初めての方はこちらから</p>
-<p>　　　　　↓　　　　　</p>
+<p>初めての方はこちらから<br>↓</p>
 <a href="Register-input.php"><button>新規登録</button></a>
 </div> 
