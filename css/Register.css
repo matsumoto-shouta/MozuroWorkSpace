@@ -119,6 +119,48 @@ h1{
 	color: #27acd9;
 }
 
+.btn2 {
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+	text-align: center;
+	text-decoration: none;
+	width: 270px;
+	margin: auto;
+	margin-bottom:24px;
+	padding: 1rem 4rem;
+	font-weight: bold;
+	background: #eee;
+	color: #27acd9;
+	border-radius: 100vh;
+	position: relative;
+	transition: 0.5s;
+}
+.btn2::before {
+	content: '';
+	position: absolute;
+	top: calc(50% - 2px);
+	right: 1em;
+	transform: translateY(calc(-50% - 2px)) rotate(45deg);
+	width: 10px;
+	height: 1px;
+	background: #27acd9;
+}
+.btn2::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 1em;
+	transform: translateY(-50%);
+	width: 50px;
+	height: 1px;
+	background-color: #27acd9;
+}
+.btn:hover {
+	background: #d4eef7;
+	color: #27acd9;
+}
+
 .result{
 	text-align: center;
     margin-top:48px;
