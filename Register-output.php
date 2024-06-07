@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<?php require 'DB-connect.php'; ?>
+<?php require 'db-connect.php'; ?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
