@@ -26,13 +26,13 @@
         <?php
 
         // 画像情報をデータベースから取得
-        $sql = "SELECT picture_name FROM Picture";
+        //$sql1 = "SELECT picture_name FROM Picture";
         //$sql2 = "SELECT * FROM Upload";
 
-        // $sql = "SELECT * FROM Upload 
-        // JOIN Picture ON Upload.picture_ID = Picture.picture_ID 
-        // JOIN UserData ON UserData.user_ID = Upload.user_ID";
-        // ;
+        $sql = "SELECT * FROM Upload 
+         JOIN Picture ON Upload.picture_ID = Picture.picture_ID 
+         JOIN UserData ON UserData.user_ID = Upload.user_ID";
+         ;
 
         $stmt = $pdo->query($sql);
         //$stmt2 = $pdo->query($sql2);
@@ -40,9 +40,9 @@
         if ($stmt->rowCount() > 0) {
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 echo "<div class='gallery-item'>";
-               // echo htmlspecialchars($row['user_name']);
+                echo htmlspecialchars($row['user_name']);
                 echo "<img src='" . htmlspecialchars($row['picture_name']) . "' alt='アップロードされた画像'>";
-               // echo htmlspecialchars($row['caption']);
+                echo htmlspecialchars($row['caption']);
                 echo "</div>";
             }
         } else {

@@ -1,7 +1,11 @@
 <?php
 session_start();
 ob_start();
-require 'DB-connect.php'; // データベース接続をインクルード
+header('Content-Type: text/html; charset=utf-8');
+
+// ファイルの他の部分を含める前に
+include('DB-connect.php');
+//require 'DB-connect.php'; // データベース接続をインクルード
 
 // セッションで設定したIDを使いやすい変数に入れてる
 $user_id = isset($_SESSION['UserData']['id']) ? $_SESSION['UserData']['id'] : null;
@@ -13,7 +17,7 @@ if ($user_id === null) {
 }
 
 // アップロードフォルダの指定
-$target_dir = "uploads/";
+$target_dir = "image/";
 
 // フォルダが存在しない場合、作成
 if (!is_dir($target_dir)) {
