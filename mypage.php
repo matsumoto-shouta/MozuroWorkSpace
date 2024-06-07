@@ -4,7 +4,7 @@
     <title>マイページ</title>
 </head>
 <body>
-    <img src="image/kkrn_icon_user_13.svg"><br>
+    <img src="image/kkrn_icon_user_13.png" alt="ユーザーアイコン"><br>
 
     <form action="profileedit-input" method="post">
         <button type="submit">プロフィールを編集</button>
