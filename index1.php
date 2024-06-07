@@ -56,23 +56,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["upload"])) {
 }
 
 // 写真とコメントのデータを取得
-$sql = "SELECT Upload.*, Comments.commnets_text, Picture.picture_name 
-        FROM Upload 
-        LEFT JOIN Comments ON Upload.picture_ID = Comments.reply_ID
-        LEFT JOIN Picture ON Upload.picture_ID = Picture.picture_ID";
-$result = $conn->query($sql);
+// $sql = "SELECT Upload.*, Comments.commnets_text, Picture.picture_name 
+//         FROM Upload 
+//         LEFT JOIN Comments ON Upload.picture_ID = Comments.reply_ID
+//         LEFT JOIN Picture ON Upload.picture_ID = Picture.picture_ID";
+// $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        echo "<div>";
-        echo "<img src='uploads/" . $row["picture_name"] . "' alt='" . $row["caption"] . "' onclick='showComments(" . $row["picture_ID"] . ")' style='max-width: 300px;'><br>";
-        echo "説明文: " . $row["caption"] . "<br>";
-        echo "</div>";
-        echo "<hr>";
-    }
-} else {
-    echo "写真はまだ投稿されていません";
-}
+// if ($result->num_rows > 0) {
+//     while($row = $result->fetch_assoc()) {
+//         echo "<div>";
+//         echo "<img src='uploads/" . $row["picture_name"] . "' alt='" . $row["caption"] . "' onclick='showComments(" . $row["picture_ID"] . ")' style='max-width: 300px;'><br>";
+//         echo "説明文: " . $row["caption"] . "<br>";
+//         echo "</div>";
+//         echo "<hr>";
+//     }
+// } else {
+//     echo "写真はまだ投稿されていません";
+// }
 
 // データベース接続のクローズ
 $conn->close();
