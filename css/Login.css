@@ -75,7 +75,7 @@
 	width: 200px;
 	margin: auto;
     margin-top:24px;
-	margin-bottom:8px;
+	margin-bottom:24px;
 	padding: 1rem 4rem;
 	font-weight: bold;
 	background: #eee;
@@ -107,4 +107,47 @@
 .btn:hover {
 	background: #e4f7d4;
 	color: #62d927;
+}
+
+/* 新規登録用ボタンデザイン */
+.btn2 {
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+	text-align: center;
+	text-decoration: none;
+	width: 270px;
+	margin: auto;
+	margin-bottom:24px;
+	padding: 1rem 4rem;
+	font-weight: bold;
+	background: #eee;
+	color: #d9d627;
+	border-radius: 100vh;
+	position: relative;
+	transition: 0.5s;
+}
+.btn2::before {
+	content: '';
+	position: absolute;
+	top: calc(50% - 2px);
+	right: 1em;
+	transform: translateY(calc(-50% - 2px)) rotate(45deg);
+	width: 10px;
+	height: 1px;
+	background: #d9d627;
+}
+.btn2::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 1em;
+	transform: translateY(-50%);
+	width: 50px;
+	height: 1px;
+	background-color: #d9d627;
+}
+.btn2:hover {
+	background: #f7f7d4;
+	color: #d9d627;
 }
