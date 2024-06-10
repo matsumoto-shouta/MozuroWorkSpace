@@ -1,3 +1,5 @@
+/* Login_inputのデザイン */
+
 /*白い枠*/
 .all{
     margin-left:20%;
@@ -150,4 +152,54 @@
 .btn2:hover {
 	background: #f7f7d4;
 	color: #d9d627;
+}
+
+/* Login_outputのデザイン */
+
+body{
+	margin:auto;
+	text-align: center;
+}
+
+.btn3 {
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+	text-align: center;
+	text-decoration: none;
+	width: 300px;
+	margin: auto;
+    margin-top:24px;
+	margin-bottom:24px;
+	padding: 1rem 4rem;
+	font-weight: bold;
+	background: #eee;
+	color: #275cd9;
+	border-radius: 100vh;
+	position: relative;
+	transition: 0.5s;
+}
+.btn3::before {
+	content: '';
+	position: absolute;
+	top: calc(50% - 2px);
+	right: 1em;
+	transform: translateY(calc(-50% - 2px)) rotate(45deg);
+	width: 10px;
+	height: 1px;
+	background: #275cd9;
+}
+.btn3::after::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 1em;
+	transform: translateY(-50%);
+	width: 50px;
+	height: 1px;
+	background-color: #275cd9;
+}
+.btn3:hover {
+	background: #d4d7f7;
+	color: #275cd9;
 }

@@ -1,12 +1,8 @@
 <?php session_start(); ?>
 <?php require 'db-connect.php'; ?>
 <link rel="stylesheet" href="css/Login.css">
-<div class="flex">
-<figure class="image"><img 
-src="image/rogo.jpg">
-</figure>
+<img src="image/rogo.jpg">
 <h1>ログイン<h1>
-</div>
 <?php 
 unset($_SESSION['UserData']);
 if($_POST['password'] != null && $_POST['login'] != null){
@@ -32,13 +28,19 @@ foreach($sql as $row){
 }
 if(isset($_SESSION['UserData'])){
     echo '<p class="log">いらっしゃいませ、',$_SESSION['UserData']['name'],'さん。</p>';
-    echo '<a href="home.php" id="my"><button>ホーム画面へ</button></a>';
+    echo '<form action="home.php" method="post">';
+    echo '<button class="btn3" type="submit">ホーム画面へ</button>';
+    echo '</form>';
 
 }else{
     echo '<p class="log">ログイン名またはパスワードが違います。</p>';
-    echo '<a href="login_input.php" id="my"><button>ログイン画面へ</button></a>';
+    echo '<form action="login_input.php" method="post">';
+    echo '<button class="btn3" type="submit">ログイン画面へ</button>';
+    echo '</form>';
 }
 }else{
     echo '<p class="log">ログイン名またはパスワードを入力してください。</p>';
-    echo '<a href="login_input.php" id="my"><button>ログイン画面へ</button></a>';
+    echo '<form action="login_input.php" method="post">';
+    echo '<button class="btn3" type="submit">ログイン画面へ</button>';
+    echo '</form>';
 }
