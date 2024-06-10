@@ -22,11 +22,13 @@
             if ($stmt->rowCount() > 0) {
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     echo "<div class='gallery-item'>";
+                    echo "<a href='image.php?id=" . htmlspecialchars($row['picture_ID']) . "'>";
                     echo "<img src='" . htmlspecialchars($row['picture_name']) . "' alt='アップロードされた画像'>";
                     echo "<div class='overlay'>";
                     echo "<div class='text'>" . htmlspecialchars($row['user_name']) . "</div>";
                     echo "<div class='text'>" . htmlspecialchars($row['caption']) . "</div>";
                     echo "</div>";
+                    echo "</a>";
                     echo "</div>";
                 }
             } else {
@@ -38,3 +40,4 @@
         ?>
     </div>
 </div>
+
