@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <link rel="stylesheet" href="css/home.css?v=1.0.1">
-<?php require 'DB-connect.php'; ?>  
+<?php require 'db-connect.php'; ?>  
 <div class="container">
     <header>
         <h1>ホーム画面</h1>

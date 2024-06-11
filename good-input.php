@@ -1,4 +1,4 @@
-<?php require 'DB-connect.php'; ?>
+<?php require 'db-connect.php'; ?>
 <?php// 投稿を取得
 $pdo = new PDO($connect,USER,PASS);
 $stmt = $pdo->prepare("SELECT * FROM Upload");
