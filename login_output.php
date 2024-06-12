@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 <?php require 'db-connect.php'; ?>
 <link rel="stylesheet" href="css/Login.css">
-<img src="image/rogo.jpg">
+<img src="./image/insta.jpg">
 <h1>ログイン<h1>
 <?php 
 unset($_SESSION['UserData']);
