@@ -167,9 +167,8 @@ body{
     align-items: center;
 	text-align: center;
 	text-decoration: none;
-	width: 300px;
+	width: 270px;
 	margin: auto;
-    margin-top:24px;
 	margin-bottom:24px;
 	padding: 1rem 4rem;
 	font-weight: bold;
@@ -189,7 +188,7 @@ body{
 	height: 1px;
 	background: #275cd9;
 }
-.btn3::after::after {
+.btn3::after{
 	content: '';
 	position: absolute;
 	top: 50%;
