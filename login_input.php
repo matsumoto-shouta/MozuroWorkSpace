@@ -1,6 +1,6 @@
 <div class="all">
 <link rel="stylesheet" href="css/Login.css">
-<img class="main-image" src="./image/insta.jpg">
+<img class="main-image" src="image/insta.png" width="200" height="200">
 <form action="login_output.php" method="post">
     <div class="form-group">
         <input type="text"  class="content" name="login" placeholder="ユーザーネーム">

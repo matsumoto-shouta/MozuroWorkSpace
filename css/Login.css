@@ -1,5 +1,6 @@
 /* Login_inputのデザイン */
 
+
 /*白い枠*/
 .all{
     margin-left:20%;
@@ -30,6 +31,7 @@
 	flex-flow: column;
 	width: 80%;
 	margin: 40px 3%;
+	margin-top:20px;
   justify-content: center;
 }
 .form-group input[type='text'] {
