@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>画像ギャラリー</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
     <h2>画像アップロードフォーム</h2>
