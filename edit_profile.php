@@ -1,11 +1,6 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['user_ID'])) {
-    // ログインしていない場合、ログインページにリダイレクト
-    header("Location: login_input.php");
-    exit();
-}
 
 require 'db-connect.php';
 
