@@ -1,4 +1,4 @@
-<?php
+-0io<?php
 // データベース接続
 $pdo = new PDO('mysql:host=localhost;dbname=insta_clone', 'username', 'password');
 
