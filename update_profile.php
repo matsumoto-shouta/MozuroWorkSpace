@@ -1,42 +1,34 @@
 <?php
-session_start();
+// データベース接続情報
+require 'db-connect.php'; 
 
-if (!isset($_SESSION['user_ID'])) {
-    // ログインしていない場合、ログインページにリダイレクト
-    header("Location: login_input.php");
-    exit();
-}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $user_ID = $_POST['user_ID'];
+    $user_name = $_POST['user_name'];
+    $pass = $_POST['pass'];
 
-require 'db-connect.php';
+    try {
+        // データベース接続の確立
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-try {
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // フォームデータの取得
-    if (isset($_POST['user_name']) && isset($_POST['pass'])) {
-        $user_ID = $_SESSION['user_ID'];
-        $user_name = $_POST['user_name'];
-        $pass = $_POST['pass']; 
-
-        // プリペアドステートメントの使用
+        // SQLクエリの準備と実行
         $stmt = $pdo->prepare("UPDATE UserData SET user_name=:user_name, pass=:pass WHERE user_ID=:user_ID");
         $stmt->bindParam(':user_name', $user_name);
         $stmt->bindParam(':pass', $pass);
         $stmt->bindParam(':user_ID', $user_ID, PDO::PARAM_INT);
 
         if ($stmt->execute()) {
-            // 更新が成功した場合、output.phpにリダイレクト
-            header("Location: edit_output.php");
-            exit();
+            echo "プロフィールが更新されました。";
         } else {
-            echo "Error: " . $stmt->errorInfo()[2];
+            echo "更新に失敗しました。";
         }
-    } else {
-        echo "Error: Form data not set properly.";
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
     }
-} catch(PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
 
-$pdo = null;
+    // データベース接続を閉じる
+    $pdo = null;
+} else {
+    echo "Error: フォームデータが正しく設定されていません。";
+}
 ?>
