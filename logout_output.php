@@ -1,9 +1,9 @@
 <?php session_start(); ?>
-
-<link rel="stylesheet" href="css/logout-output.css">
+<div class="all">
+<link rel="stylesheet" href="css/Logout.css">
     <div class="flex">
 <figure class="image">
-<img src ="image/rogo.jpg">
+<img src ="image/instakiro.png" width="100" height="100">
 </figure>
     <h1>ログアウト</h1>
 </div>
@@ -18,4 +18,5 @@ if(isset($_SESSION['UserData'])){
 ?>
 
 </div>
-    <a href="login_input.php" id="my"><button>ログインへ戻る</button></a>
+    <a href="login_input.php" id="my"><button class="btn">ログインへ戻る</button></a>
+</div>

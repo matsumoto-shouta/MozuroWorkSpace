@@ -1,0 +1,28 @@
+.all{
+    margin-left:20%;
+    margin-right:20%;
+    margin-top: 10%;
+	text-align: center;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.29);
+
+}
+.btn {
+	text-align: center;
+	text-decoration: none;
+	width: 200px;
+	margin: auto;
+    margin-top:24px;
+	margin-bottom:24px;
+	padding: 1rem 4rem;
+	font-weight: bold;
+	background: #eee;
+	color: #62d927;
+	border-radius: 100vh;
+	position: relative;
+	transition: 0.5s;
+}
