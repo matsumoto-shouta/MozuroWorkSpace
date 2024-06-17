@@ -11,7 +11,7 @@
         <label for="file" class="select">画像を選択してください:</label><br>
         キャプション: <input type="text" name="caption" id="caption"><br>
         <input type="file" name="file" id="file">
-        <input type="submit" value="アップロード">
+        <button type="submit" class="upbtn">アップロード</button>
 
         
     </form>
