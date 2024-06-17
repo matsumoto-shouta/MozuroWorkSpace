@@ -1,0 +1,11 @@
+h2{
+    text-align: center;
+    margin: auto;
+    margin-top: 32px;
+    margin-bottom: 60px;
+}
+
+#caption{
+    width: 300px;
+    height: 200px;
+}
