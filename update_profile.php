@@ -32,3 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "Error: フォームデータが正しく設定されていません。";
 }
 ?>
+    <form action= "home.php" method="post">';
+        <input type="submit" value="ホームに戻る">
+
