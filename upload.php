@@ -4,10 +4,9 @@ ob_start();
 header('Content-Type: text/html; charset=utf-8');
 
 // ファイルの他の部分を含める前に
-include('DB-connect.php');
-//require 'DB-connect.php'; // データベース接続をインクルード
+include('db-connect.php');
 
-// セッションで設定したIDを使いやすい変数に入れてる
+// セッションで設定したIDを使いやすい変数に入れる
 $user_id = isset($_SESSION['UserData']['id']) ? $_SESSION['UserData']['id'] : null;
 $caption = isset($_POST['caption']) ? $_POST['caption'] : '';
 
@@ -62,27 +61,31 @@ if ($uploadOk == 0) {
 } else {
     // ファイルをアップロード
     if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-        // データベースにファイルパスを保存
-        $pic = $pdo->prepare("INSERT INTO Picture (picture_name) VALUES (?)");
-
-        if ($pic) {
+        try {
+            // データベースにファイルパスを保存
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $pdo->beginTransaction();
-            try {
-                $pic->execute([$target_file]);
-                $picture_ID = $pdo->lastInsertId(); // picture_IDを取得
 
-                // 投稿したユーザーID、キャプション、picture_ID、comments_ID（仮にNULL）、good_ID（仮にNULL）を保存
-                $up = $pdo->prepare("INSERT INTO Upload (user_ID, caption, picture_ID, comments_ID, good_ID) VALUES (?, ?, ?, ?, ?)");
-                $up->execute([$user_id, $caption, $picture_ID, null, null]);
+            $pic = $pdo->prepare("INSERT INTO Picture (picture_name) VALUES (?)");
+            $pic->execute([$target_file]);
 
-                $pdo->commit();
-                echo "ファイル ". htmlspecialchars($original_filename) . " がアップロードされました。<br>";
-            } catch (Exception $e) {
-                $pdo->rollBack();
-                echo "申し訳ありませんが、データベースへの保存中にエラーが発生しました。<br>";
+            $picture_ID = $pdo->lastInsertId(); // picture_IDを取得
+
+            // INSERT 文の結果を確認
+            if ($picture_ID == 0) {
+                throw new Exception("Picture テーブルへの INSERT に失敗しました。");
             }
-        } else {
-            echo "申し訳ありませんが、データベースへの保存中にエラーが発生しました。<br>";
+
+            // 投稿したユーザーID、キャプション、picture_ID、comments_ID（仮にNULL）、likes_ID（仮にNULL）を保存
+            $up = $pdo->prepare("INSERT INTO Upload (user_ID, caption, picture_ID) VALUES (?, ?, ?)");
+            $up->execute([$user_id, $caption, $picture_ID]);
+
+            $pdo->commit();
+            echo "ファイル ". htmlspecialchars($original_filename) . " がアップロードされました。<br>";
+        } catch (Exception $e) {
+            $pdo->rollBack();
+            echo "申し訳ありませんが、データベースへの保存中にエラーが発生しました: " . $e->getMessage() . "<br>";
+            error_log($e->getMessage(), 3, '/path/to/your/logfile.log'); // エラーログに記録
         }
     } else {
         echo "申し訳ありませんが、ファイルのアップロード中にエラーが発生しました。<br>";
@@ -93,4 +96,3 @@ if ($uploadOk == 0) {
 header('Location: home.php');
 exit();
 ob_end_flush(); // 出力バッファをフラッシュして終了
-?>

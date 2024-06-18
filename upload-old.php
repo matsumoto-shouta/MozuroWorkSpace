@@ -1,10 +1,10 @@
 <?php
 session_start();
-ob_start(); 
+ob_start();
 header('Content-Type: text/html; charset=utf-8');
 
 // ファイルの他の部分を含める前に
-include('DB-connect.php');
+include('db-connect.php');
 //require 'DB-connect.php'; // データベース接続をインクルード
 
 // セッションで設定したIDを使いやすい変数に入れてる
@@ -17,7 +17,7 @@ if ($user_id === null) {
 }
 
 // アップロードフォルダの指定
-$target_dir = "uploads/";
+$target_dir = "image/";
 
 // フォルダが存在しない場合、作成
 if (!is_dir($target_dir)) {
@@ -71,9 +71,9 @@ if ($uploadOk == 0) {
                 $pic->execute([$target_file]);
                 $picture_ID = $pdo->lastInsertId(); // picture_IDを取得
 
-                // 投稿したユーザーIDとキャプション、picture_IDを保存
-                $up = $pdo->prepare("INSERT INTO Upload (user_ID, picture_ID, caption) VALUES (?, ?, ?)");
-                $up->execute([$user_id, $picture_ID, $caption]);
+                // 投稿したユーザーID、キャプション、picture_ID、comments_ID（仮にNULL）、likes_ID（仮にNULL）を保存
+                $up = $pdo->prepare("INSERT INTO Upload (user_ID, caption, picture_ID, comments_ID, likes_ID) VALUES (?, ?, ?, ?, ?)");
+                $up->execute([$user_id, $caption, $picture_ID, null, null]);
 
                 $pdo->commit();
                 echo "ファイル ". htmlspecialchars($original_filename) . " がアップロードされました。<br>";
