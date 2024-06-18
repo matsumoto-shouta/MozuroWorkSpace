@@ -9,7 +9,7 @@
 <body>
 <div class="container">
     <?php
-    require 'DB-connect.php'; 
+    require 'db-connect.php'; 
 
     if (isset($_GET['id'])) {
         $picture_id = htmlspecialchars($_GET['id']);
@@ -31,6 +31,39 @@
             echo "<p>画像が見つかりません。</p>";
         }
     } else {
+        echo "<p>無効なIDです。</p>";
+    }
+
+    echo "<div class='comments'>";
+        echo "<h2>コメント</h2>";
+
+        $comment_sql = "SELECT * FROM Comments 
+                        JOIN UserData ON Comments.user_ID = UserData.user_ID
+                        WHERE picture_ID = ? ORDER BY up_time DESC";
+        $comment_stmt = $pdo->prepare($comment_sql);
+        $comment_stmt->execute([$picture_id]);
+
+        while ($comment = $comment_stmt->fetch(PDO::FETCH_ASSOC)) {
+            echo "<div class='comment'>";
+            echo "<p><strong>" . htmlspecialchars($comment['user_name']) . ":</strong> " . htmlspecialchars($comment['comments_text']) . "</p>";
+            echo "<p class='timestamp'>" . htmlspecialchars($comment['up_time']) . "</p>";
+            echo "</div>";oo
+        }
+        echo "</div>";
+
+        // コメントの追加フォーム
+        if (isset($_SESSION['UserData']['id'])) {
+            echo "<div class='comment-form'>";
+            echo "<h3>コメントを追加</h3>";
+            echo "<form action='add_comment.php' method='post'>";
+            echo "<input type='hidden' name='picture_id' value='" . htmlspecialchars($picture_id) . "'>";
+            echo "<textarea name='comment_text' rows='4' cols='50' required></textarea><br>";
+            echo "<input type='submit' value='コメントを追加'>";
+            echo "</form>";
+            echo "</div>";
+        } else {
+            echo "<p>コメントを追加するにはログインしてください。</p>";
+        }else {
         echo "<p>無効なIDです。</p>";
     }
     ?>
