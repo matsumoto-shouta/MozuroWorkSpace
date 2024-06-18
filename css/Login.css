@@ -5,6 +5,7 @@
 .all{
     margin-left:20%;
     margin-right:20%;
+	padding-top: 3%;
 	text-align: center;
     background: rgba(255, 255, 255, 0.75);
     border-radius: 16px;
@@ -67,6 +68,9 @@
 .content input[type='password']:focus {
 	border-bottom: 2px solid #da3c41;
 	outline: none;
+}
+body{
+	padding-top: 3%;
 }
 
 /*ボタンデザイン*/
