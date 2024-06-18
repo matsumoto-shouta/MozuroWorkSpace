@@ -1,11 +1,13 @@
 <?php
+session_start();
 // データベース接続情報
-require 'db-connect.php'; 
+require 'db-connect.php';
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user_ID = $_POST['user_ID'];
+    $user_ID = $_SESSION['UserData']['id'];
     $user_name = $_POST['user_name'];
-    $pass = $_POST['pass'];
+    $pass =$_POST['pass']; // パスワードをハッシュ化
 
     try {
         // データベース接続の確立
@@ -32,6 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "Error: フォームデータが正しく設定されていません。";
 }
 ?>
-    <form action= "home.php" method="post">';
-        <input type="submit" value="ホームに戻る">
+<form action="home.php" method="post">
+<button type="submit">ホームに戻る</button>
 
