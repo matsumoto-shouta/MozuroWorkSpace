@@ -8,7 +8,7 @@
     <title>マイページ</title>
 </head>
 <body>
-<form action="upload.php" method="post" enctype="multipart/form-data">
+<form action="icon.php" method="post" enctype="multipart/form-data">
         <label for="file">アイコン画像を選択:</label>
         <input type="file" name="file" id="file">
         <button type="submit">アップロード</button>
