@@ -8,6 +8,11 @@
     <title>マイページ</title>
 </head>
 <body>
+<form action="upload.php" method="post" enctype="multipart/form-data">
+        <label for="file">アイコン画像を選択:</label>
+        <input type="file" name="file" id="file">
+        <button type="submit">アップロード</button>
+    </form>
     <img src="image/kkrn_icon_user_13.png" alt="ユーザーアイコン" style="width: 100px; height: 100px;"><br>
 
     <form action="edit_profile.php" method="post">
