@@ -35,5 +35,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <form action="home.php" method="post">
-<button type="submit">ホームに戻る</button>
+<button type="submit">ホームに戻る</button>;;
 
