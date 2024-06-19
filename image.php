@@ -8,6 +8,7 @@
 </head>
 <body>
 <div class="container">
+<a href='home.php'>ホーム画面へ</a>
     <?php
     require 'db-connect.php'; 
 
