@@ -25,11 +25,19 @@ if (!is_dir($target_dir)) {
     }
 }
 
-// アップロードされたファイルの情報を取得
-$original_filename = basename($_FILES["file"]["name"]);
-$imageFileType = strtolower(pathinfo($original_filename, PATHINFO_EXTENSION));
-$unique_name = uniqid() . '.' . $imageFileType;
-$target_file = $target_dir . $unique_name;
+// アップロードされたファイルの情報を取得↓↓
+
+ // 元のファイル名を取得
+ $original_filename = basename($_FILES["file"]["name"]);
+
+ // ファイルの拡張子を取得し小文字に変換
+ $imageFileType = strtolower(pathinfo($original_filename, PATHINFO_EXTENSION));
+
+ // 一意のファイル名を生成
+ $unique_name = uniqid() . '.' . $imageFileType;
+ 
+ // ターゲットファイルのパスを生成
+ $target_file = $target_dir . $unique_name;
 
 $uploadOk = 1;
 
