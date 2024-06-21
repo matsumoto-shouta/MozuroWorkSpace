@@ -11,7 +11,7 @@
     <img src="image/kkrn_icon_user_13.png" alt="ユーザーアイコン" style="width: 100px; height: 100px;"><br>
 
     <form action="edit_profile.php" method="post">
-        <button type="submit">プロフィールを編集a</button>
+        <button type="submit">プロフィールを編集</button>
     </form><br>
 
     <div class="container">
