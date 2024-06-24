@@ -30,9 +30,12 @@
     <div class="gallery">
         <?php
         if(isset($_SESSION['UserData']['id'])){
-            $sql = "SELECT * FROM Upload 
+            $sql = "SELECT Picture.picture_ID, Picture.picture_name, UserData.user_name, Upload.caption, COUNT(likes.id) as like_count
+                    FROM Upload 
                     JOIN Picture ON Upload.picture_ID = Picture.picture_ID 
-                    JOIN UserData ON UserData.user_ID = Upload.user_ID";
+                    JOIN UserData ON UserData.user_ID = Upload.user_ID
+                    LEFT JOIN likes ON Picture.picture_ID = likes.post_id
+                    GROUP BY Picture.picture_ID";
             $stmt = $pdo->query($sql);
 
             if ($stmt->rowCount() > 0) {
@@ -45,6 +48,11 @@
                     echo "<div class='text'>" . htmlspecialchars($row['caption']) . "</div>";
                     echo "</div>";
                     echo "</a>";
+                    echo "<form action='like1.php' method='post'>";
+                    echo "<input type='hidden' name='post_ID' value='" . htmlspecialchars($row['picture_ID']) . "'>";
+                    echo "<button type='submit'>いいね</button>";
+                    echo "</form>";
+                    echo "<p>いいね数: " . htmlspecialchars($row['like_count']) . "</p>";
                     echo "</div>";
                 }
             } else {
@@ -56,4 +64,3 @@
         ?>
     </div>
 </div>
-
