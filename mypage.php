@@ -4,7 +4,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./css/mypage.css">
+    <link rel="stylesheet" href="css/mypage.css">
     <title>マイページ</title>
 </head>
 <body>
@@ -32,7 +32,7 @@
                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                         echo "<div class='gallery-item'>";
                         echo "<a href='image.php?id=" . htmlspecialchars($row['picture_ID']) . "'>";
-                        echo "<img src='" . htmlspecialchars($row['picture_name']) . "' alt='アップロードされた画像'>";
+                        echo "<img src='" . htmlspecialchars($row['picture_name']) . "' alt=''>";
                         echo "<div class='overlay'>";
                         echo "<div class='text'>" . htmlspecialchars($row['user_name']) . "</div>";
                         echo "<div class='text'>" . htmlspecialchars($row['caption']) . "</div>";
