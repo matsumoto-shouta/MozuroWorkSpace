@@ -35,7 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
         echo "コメントの追加中にエラーが発生しました: " . $e->getMessage();
     }
 }
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -78,11 +79,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
     animation: move 20s linear infinite; /* コメントを流すアニメーション */
 }
-@keyframes move {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
-}
-
 
     </style>
 </head>
@@ -158,56 +154,61 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
     <!-- コメントをニコニコ動画風に流すスクリプト -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-    const commentsContainer = document.querySelector(".comments");
-    const canvasContainer = document.getElementById("canvasContainer"); // IDで取得する
-    const toggleButton = document.getElementById("toggleComments");
-    let commentsRunning = true;
-    let intervalId = null;
+            const comments = document.querySelectorAll(".comment p");
+            const canvasContainer = document.getElementById("canvasContainer");
+            const toggleButton = document.getElementById("toggleComments");
+            let commentsRunning = true;
+            let intervalId = null;
 
-    // コメントアニメーションを開始する関数
-    function startCommentsAnimation() {
-        // canvasContainerをクリアする
-        canvasContainer.innerHTML = '';
+            comments.forEach((comment, index) => {
+                const commentText = comment.textContent.trim();
+                const commentElement = document.createElement("div");
+                commentElement.classList.add("comment-flow");
+                commentElement.textContent = commentText;
 
-        // .commentsからコメントを取得
-        const comments = commentsContainer.querySelectorAll(".comment");
+                // ランダムな表示位置を設定
+                const topPosition = Math.floor(Math.random() * (canvasContainer.clientHeight - 30));
+                const leftPosition = Math.floor(Math.random() * (canvasContainer.clientWidth - commentElement.offsetWidth));
+                commentElement.style.top = `${topPosition}px`;
+                commentElement.style.left = `${leftPosition}px`;
 
-        comments.forEach(comment => {
-            const commentText = comment.querySelector("p").textContent.trim();
-            const commentElement = document.createElement("div");
-            commentElement.classList.add("comment-flow");
-            commentElement.textContent = commentText;
+                canvasContainer.appendChild(commentElement);
+            });
 
-            // canvasContainer内のランダムな位置に配置
-            const topPosition = Math.floor(Math.random() * (canvasContainer.clientHeight - commentElement.offsetHeight));
-            const leftPosition = Math.floor(Math.random() * (canvasContainer.clientWidth - commentElement.offsetWidth));
-            commentElement.style.top = `${topPosition}px`;
-            commentElement.style.left = `${leftPosition}px`;
+            function startComments() {
+                commentsRunning = true;
+                intervalId = setInterval(() => {
+                    const commentFlows = document.querySelectorAll(".comment-flow");
 
-            canvasContainer.appendChild(commentElement);
+                    commentFlows.forEach(commentFlow => {
+                        commentFlow.style.animation = 'move 20s linear infinite';
+                    });
+                }, 10000); // 10秒ごとにコメントを再開
+            }
+
+            function stopComments() {
+                commentsRunning = false;
+                clearInterval(intervalId);
+
+                const commentFlows = document.querySelectorAll(".comment-flow");
+                commentFlows.forEach(commentFlow => {
+                    commentFlow.style.animation = 'none'; // アニメーションを停止
+                });
+            }
+
+            // 初期状態でコメントを開始
+            startComments();
+
+            toggleButton.addEventListener("click", function() {
+                if (commentsRunning) {
+                    stopComments();
+                    toggleButton.textContent = 'コメントを再生';
+                } else {
+                    startComments();
+                    toggleButton.textContent = 'コメントを停止';
+                }
+            });
         });
-    }
-
-    // 初期状態でコメントアニメーションを開始
-    startCommentsAnimation();
-
-    // トグルボタンの機能
-    toggleButton.addEventListener("click", function() {
-        if (commentsRunning) {
-            // コメントアニメーションを停止
-            clearInterval(intervalId);
-            canvasContainer.innerHTML = ''; // 既存のコメントをクリア
-            toggleButton.textContent = 'コメントを再生';
-        } else {
-            // コメントアニメーションを開始
-            startCommentsAnimation();
-            toggleButton.textContent = 'コメントを停止';
-        }
-
-        commentsRunning = !commentsRunning;
-    });
-});
-
     </script>
 
 </div>
