@@ -13,7 +13,8 @@
 }
 
 .gallery-item {
-    flex: 1 0 30%; /* 3つ並べるために30%に設定 */
+    width: 200px; /* 固定幅を設定 */
+    height: 200px; /* 固定高さを設定 */
     margin: 10px; /* 画像の間に少し間隔を持たせる */
     box-sizing: border-box;
     position: relative;
@@ -23,6 +24,7 @@
 .gallery-item img {
     width: 100%;
     height: auto;
+    object-fit: cover; /* 画像がコンテナに収まるようにします */
     display: block;
 }
 
