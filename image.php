@@ -18,21 +18,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
         $stmt = $pdo->prepare("INSERT INTO Comments (comments_text, reuser_ID, picture_ID, up_time) VALUES (?, ?, ?, NOW())");
         $stmt->execute([$comment_text, $user_id, $picture_id]);
 
-        // 挿入したコメントのIDを取得
-        $comment_ID = $pdo->lastInsertId();
-
-        // `Upload`テーブルにコメントIDを挿入するクエリ
-        $update_stmt = $pdo->prepare("UPDATE Upload SET comments_ID = ? WHERE picture_ID = ?");
-        $update_stmt->execute([$comment_ID, $picture_id]);
-
         // トランザクションをコミット
         $pdo->commit();
 
-        echo "コメントが追加されました。<br>";
+        // コメントが追加された後、ページをリダイレクト
+        header("Location: image.php?id=" . $picture_id);
+        exit();
     } catch (Exception $e) {
         // エラーが発生した場合、ロールバック
         $pdo->rollBack();
         echo "コメントの追加中にエラーが発生しました: " . $e->getMessage();
+        exit();
     }
 }
 ?>
@@ -71,29 +67,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
         }
 
         .comment-flow {
-    position: absolute;
-    white-space: nowrap;
-    font-size: 16px; /* フォントサイズを調整 */
-    font-weight: bold;
-    color: white;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-    animation: move 5s linear infinite; /* コメントを流すアニメーション */
-    }
+            position: absolute;
+            white-space: nowrap;
+            font-size: 16px; /* フォントサイズを調整 */
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            animation: move 5s linear infinite; /* コメントを流すアニメーション */
+        }
 
-    @keyframes move {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100vw); }
-}
-
-
+        @keyframes move {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100vw); }
+        }
     </style>
 </head>
 <body>
 <div class="container">
     <a href='home.php'>ホーム画面へ</a>
-    <!-- 再生/停止ボタン -->
+    <!-- 表示/非表示ボタン -->
     <div>
-        <button id="toggleComments">コメントを停止</button>
+        <button id="toggleComments">コメントを非表示</button>
     </div>
     <?php
     if (isset($_GET['id'])) {
@@ -161,7 +155,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
             const commentsContainer = document.querySelector(".comments");
             const canvasContainer = document.getElementById("canvasContainer"); // IDで取得する
             const toggleButton = document.getElementById("toggleComments");
-            let commentsRunning = true;
+            let commentsVisible = true;
 
             // コメントアニメーションを開始する関数
             function startCommentsAnimation() {
@@ -191,18 +185,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
 
             // トグルボタンの機能
             toggleButton.addEventListener("click", function() {
-                if (commentsRunning) {
-                    // コメントアニメーションを停止
-                    clearInterval(intervalId);
-                    canvasContainer.innerHTML = ''; // 既存のコメントをクリア
-                    toggleButton.textContent = 'コメントを再生';
+                if (commentsVisible) {
+                    canvasContainer.style.display = 'none'; // コメント非表示
+                    toggleButton.textContent = 'コメントを表示';
                 } else {
-                    // コメントアニメーションを開始
-                    startCommentsAnimation();
-                    toggleButton.textContent = 'コメントを停止';
+                    canvasContainer.style.display = 'block'; // コメント表示
+                    startCommentsAnimation(); // アニメーションを再開始
+                    toggleButton.textContent = 'コメントを非表示';
                 }
 
-                commentsRunning = !commentsRunning;
+                commentsVisible = !commentsVisible;
             });
         });
     </script>

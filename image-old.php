@@ -70,29 +70,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
             overflow: hidden; /* 画像からはみ出した部分を非表示にする */
         }
 
-            .comment-flow {
-        position: absolute;
-        white-space: nowrap;
-        font-size: 16px; /* フォントサイズを調整 */
-        font-weight: bold;
-        color: white;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-        animation: move 10s linear infinite; /* コメントを流すアニメーション */
-    }
-    
+        .comment-flow {
+            position: absolute;
+            white-space: nowrap;
+            font-size: 16px; /* フォントサイズを調整 */
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            animation: move 5s linear infinite; /* コメントを流すアニメーション */
+        }
 
-    @keyframes move {
-        0% { transform: translateX(100%); }
-        100% { transform: translateX(-100%); }
-    }
+        @keyframes move {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100vw); }
+        }
+
     </style>
 </head>
 <body>
 <div class="container">
     <a href='home.php'>ホーム画面へ</a>
-    <!-- 再生/停止ボタン -->
+    <!-- 表示/非表示ボタン -->
     <div>
-        <button id="toggleComments">コメントを停止</button>
+        <button id="toggleCommentsVisibility">コメントを非表示</button>
     </div>
     <?php
     if (isset($_GET['id'])) {
@@ -151,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
         } else {
             echo "<p>コメントがまだありません。</p>";
         }
-        ?>
+    ?>
     </div>
 
     <!-- コメントをニコニコ動画風に流すスクリプト -->
@@ -159,9 +159,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
         document.addEventListener("DOMContentLoaded", function() {
             const commentsContainer = document.querySelector(".comments");
             const canvasContainer = document.getElementById("canvasContainer"); // IDで取得する
-            const toggleButton = document.getElementById("toggleComments");
-            let commentsRunning = true;
-            let intervalId = null;
+            const toggleVisibilityButton = document.getElementById("toggleCommentsVisibility");
+            let commentsVisible = true;
 
             // コメントアニメーションを開始する関数
             function startCommentsAnimation() {
@@ -189,20 +188,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
             // 初期状態でコメントアニメーションを開始
             startCommentsAnimation();
 
-            // トグルボタンの機能
-            toggleButton.addEventListener("click", function() {
-                if (commentsRunning) {
-                    // コメントアニメーションを停止
-                    clearInterval(intervalId);
-                    canvasContainer.innerHTML = ''; // 既存のコメントをクリア
-                    toggleButton.textContent = 'コメントを再生';
+            // コメント表示/非表示ボタンの機能
+            toggleVisibilityButton.addEventListener("click", function() {
+                if (commentsVisible) {
+                    // コメントを非表示
+                    canvasContainer.style.display = 'none';
+                    toggleVisibilityButton.textContent = 'コメントを表示';
                 } else {
-                    // コメントアニメーションを開始
-                    startCommentsAnimation();
-                    toggleButton.textContent = 'コメントを停止';
+                    // コメントを表示
+                    canvasContainer.style.display = 'block';
+                    toggleVisibilityButton.textContent = 'コメントを非表示';
                 }
 
-                commentsRunning = !commentsRunning;
+                commentsVisible = !commentsVisible;
             });
         });
     </script>
