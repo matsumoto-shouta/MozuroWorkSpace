@@ -29,8 +29,10 @@
     <!-- ここまでハンバーガーメニュー -->
     <h2>画像アップロードフォーム</h2>
     <form action="upload.php" method="post" enctype="multipart/form-data">
-        <label for="file" class="select">画像を選択してください:</label><br>
-        <input type="file" name="file" id="file"><br>
+        <div class="file">
+            <label for="file" class="select">画像を選択してください:</label><br>
+            <input type="file" name="file" id="file"><br>
+        </div>
 
         <div id="preview"></div><br>
 
