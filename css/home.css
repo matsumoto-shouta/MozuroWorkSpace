@@ -11,29 +11,6 @@ body {
     padding: 20px;
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #ddd;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 24px;
-}
-
-nav {
-    display: flex;
-    gap: 10px;
-}
-
-.nav-link {
-    text-decoration: none;
-    color: #3897f0;
-    font-weight: bold;
-}
 
 h2 {
     margin-top: 20px;

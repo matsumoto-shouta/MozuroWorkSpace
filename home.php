@@ -18,6 +18,7 @@
     </button>
     <nav class="navigation">
         <ul class="navigation__list">
+        <li class="navigation__list-item"><a href="home.php" class="navigation__link">ホーム</a></li>
         <li class="navigation__list-item"><a href="mypage.php" class="navigation__link">マイページ</a></li>
         <li class="navigation__list-item"><a href="index.php" class="navigation__link">アップロード</a></li>
         <li class="navigation__list-item"><a href="logout_input" class="navigation__link">ログアウト</a></li>
