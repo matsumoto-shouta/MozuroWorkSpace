@@ -1,9 +1,12 @@
 <?php
 session_start();
-ob_start(); 
-require 'DB-connect.php'; // データベース接続をインクルード
+ob_start();
+header('Content-Type: text/html; charset=utf-8');
 
-// セッションで設定したIDを使いやすい変数に入れてる
+// ファイルの他の部分を含める前に
+include('db-connect.php');
+
+// セッションで設定したIDを使いやすい変数に入れる
 $user_id = isset($_SESSION['UserData']['id']) ? $_SESSION['UserData']['id'] : null;
 $caption = isset($_POST['caption']) ? $_POST['caption'] : '';
 
@@ -13,7 +16,7 @@ if ($user_id === null) {
 }
 
 // アップロードフォルダの指定
-$target_dir = "uploads/";
+$target_dir = "image/";
 
 // フォルダが存在しない場合、作成
 if (!is_dir($target_dir)) {
@@ -22,11 +25,19 @@ if (!is_dir($target_dir)) {
     }
 }
 
-// アップロードされたファイルの情報を取得
-$original_filename = basename($_FILES["file"]["name"]);
-$imageFileType = strtolower(pathinfo($original_filename, PATHINFO_EXTENSION));
-$unique_name = uniqid() . '.' . $imageFileType;
-$target_file = $target_dir . $unique_name;
+// アップロードされたファイルの情報を取得↓↓
+
+ // 元のファイル名を取得
+ $original_filename = basename($_FILES["file"]["name"]);
+
+ // ファイルの拡張子を取得し小文字に変換
+ $imageFileType = strtolower(pathinfo($original_filename, PATHINFO_EXTENSION));
+
+ // 一意のファイル名を生成
+ $unique_name = uniqid() . '.' . $imageFileType;
+ 
+ // ターゲットファイルのパスを生成
+ $target_file = $target_dir . $unique_name;
 
 $uploadOk = 1;
 
@@ -58,26 +69,31 @@ if ($uploadOk == 0) {
 } else {
     // ファイルをアップロード
     if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-        //1. データベースにファイルパスを保存
-        $pic = $pdo->prepare("INSERT INTO Picture (picture_ID,picture_name) VALUES (null,?)");
-
-        //2. 投稿したuo_IDとユーザー人のIDとキャプションを保存
-        $up = $pdo->prepare("INSERT INTO Upload (up_ID,user_ID, caption) VALUES (null,?, ?)");
-
-        if ($pic && $up) {
+        try {
+            // データベースにファイルパスを保存
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $pdo->beginTransaction();
-            try {
-                $pic->execute([$target_file]);
-                $uploadID = $pdo->lastInsertId();
-                $up->execute([$user_id, $caption]);
-                $pdo->commit();
-                echo "ファイル ". htmlspecialchars($original_filename) . " がアップロードされました。<br>";
-            } catch (Exception $e) {
-                $pdo->rollBack();
-                echo "申し訳ありませんが、データベースへの保存中にエラーが発生しました。<br>";
+
+            $pic = $pdo->prepare("INSERT INTO Picture (picture_name) VALUES (?)");
+            $pic->execute([$target_file]);
+
+            $picture_ID = $pdo->lastInsertId(); // picture_IDを取得
+
+            // INSERT 文の結果を確認
+            if ($picture_ID == 0) {
+                throw new Exception("Picture テーブルへの INSERT に失敗しました。");
             }
-        } else {
-            echo "申し訳ありませんが、データベースへの保存中にエラーが発生しました。<br>";
+
+            // 投稿したユーザーID、キャプション、picture_ID、comments_ID（仮にNULL）、likes_ID（仮にNULL）を保存
+            $up = $pdo->prepare("INSERT INTO Upload (user_ID, caption, picture_ID) VALUES (?, ?, ?)");
+            $up->execute([$user_id, $caption, $picture_ID]);
+
+            $pdo->commit();
+            echo "ファイル ". htmlspecialchars($original_filename) . " がアップロードされました。<br>";
+        } catch (Exception $e) {
+            $pdo->rollBack();
+            echo "申し訳ありませんが、データベースへの保存中にエラーが発生しました: " . $e->getMessage() . "<br>";
+            error_log($e->getMessage(), 3, '/path/to/your/logfile.log'); // エラーログに記録
         }
     } else {
         echo "申し訳ありませんが、ファイルのアップロード中にエラーが発生しました。<br>";
@@ -88,4 +104,3 @@ if ($uploadOk == 0) {
 header('Location: home.php');
 exit();
 ob_end_flush(); // 出力バッファをフラッシュして終了
-?>
