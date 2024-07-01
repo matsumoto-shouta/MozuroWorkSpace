@@ -6,11 +6,11 @@
 <?php 
 unset($_SESSION['UserData']);
 if($_POST['password'] != null && $_POST['login'] != null){
-$pdo = new PDO($connect,USER,PASS);
 $sql = $pdo->prepare('select * from UserData where user_name=?');
 $sql->execute([$_POST['login']]);
 
 foreach($sql as $row){
+    
     if($_POST["password"]==$row['pass']){
     $_SESSION['UserData']=[
         // rowの中身にsql（DB）の内容が入ってる。rowの中身をセッションのそれぞれの所に入れてる。
