@@ -1,3 +1,5 @@
+<?php require 'hamburger.php'; ?>
+
 <div class="all">
 <link rel="stylesheet" href="./css/Logout.css">
     <div class="flex">
@@ -6,7 +8,6 @@
         <h1>ログアウト<h1>
     </div>
     <div id='a'>
-
         <p class='log'>ログアウトします本当によろしいですか？</br>
         ログアウト後のログイン画面へ移行します</p>
     </div>
