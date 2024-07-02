@@ -51,29 +51,24 @@
         <!-- ユーザーのアップロードした画像の表示 -->
         <div class="gallery">
             <?php
-            if(isset($_SESSION['UserData']['id'])){
-                $user_id = $_SESSION['UserData']['id'];
-                $sql = "SELECT Upload.*, Picture.picture_name, UserData.user_name 
-                        FROM Upload 
-                        JOIN Picture ON Upload.picture_ID = Picture.picture_ID 
-                        JOIN UserData ON UserData.user_ID = Upload.user_ID 
-                        WHERE Upload.user_ID = :user_id";
-                $stmt = $pdo->prepare($sql);
-                $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-                $stmt->execute();
+            $sql = "SELECT Upload.*, Picture.picture_name, UserData.user_name 
+                    FROM Upload 
+                    JOIN Picture ON Upload.picture_ID = Picture.picture_ID 
+                    JOIN UserData ON UserData.user_ID = Upload.user_ID";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
 
-                if ($stmt->rowCount() > 0) {
-                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                        echo "<div class='gallery-item'>";
-                        echo "<a href='image.php?id=" . htmlspecialchars($row['picture_ID']) . "'>";
-                        echo "<img src='" . htmlspecialchars($row['picture_name']) . "' alt=''>";
-                        echo "<div class='overlay'>";
-                        echo "<div class='text'>" . htmlspecialchars($row['user_name']) . "</div>";
-                        echo "<div class='text'>" . htmlspecialchars($row['caption']) . "</div>";
-                        echo "</div>";
-                        echo "</a>";
-                        echo "</div>";
-                    }
+            if ($stmt->rowCount() > 0) {
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    echo "<div class='gallery-item'>";
+                    echo "<a href='image.php?id=" . htmlspecialchars($row['picture_ID']) . "'>";
+                    echo "<img src='" . htmlspecialchars($row['picture_name']) . "' alt=''>";
+                    echo "<div class='overlay'>";
+                    echo "<div class='text'>" . htmlspecialchars($row['user_name']) . "</div>";
+                    echo "<div class='text'>" . htmlspecialchars($row['caption']) . "</div>";
+                    echo "</div>";
+                    echo "</a>";
+                    echo "</div>";
                 }
             }
             ?>

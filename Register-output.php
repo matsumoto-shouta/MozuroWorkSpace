@@ -51,6 +51,7 @@
         }
         ?>
     </div>
+    
 <a href="login_input.php"><button class="btn2">ログイン画面に戻る</button></a>
 </body>
 </html>
