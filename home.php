@@ -1,10 +1,6 @@
 <?php session_start(); ?>
 <link rel="stylesheet" href="css/home.css?v=1.0.1">
 
-<head>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="javascript/hamburger.js"></script>
-</head>
 
 <?php require 'db-connect.php'; ?>  
 <div class="container">
