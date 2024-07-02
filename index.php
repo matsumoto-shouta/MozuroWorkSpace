@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>画像ギャラリー</title>
+    <?php require "hamburger.php"; ?>
     <link rel="stylesheet" href="css/index.css">
     <script src="javascript/Preview.js"></script>
 </head>
 <body>
-    <?php require "hamburger.php"; ?>
 
     <h2>画像アップロードフォーム</h2>
     <form action="upload.php" method="post" enctype="multipart/form-data">
