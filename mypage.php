@@ -27,7 +27,7 @@
 </head>
 <body>
 
-    <img src="image/kkrn_icon_user_13.png" alt="ユーザーアイコン" style="width: 100px; height: 100px;"><br>
+    <!-- <img src="image/kkrn_icon_user_13.png" alt="ユーザーアイコン" style="width: 100px; height: 100px;"><br> -->
     <?php
     if(isset($_SESSION['UserData']['id'])){
         $user_id = $_SESSION['UserData']['id'];
