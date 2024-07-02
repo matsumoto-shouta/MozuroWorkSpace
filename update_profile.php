@@ -1,39 +1,47 @@
 <?php
+ob_start(); // 出力バッファリングを開始
+
 session_start();
-// データベース接続情報
 require 'db-connect.php';
 
+// アップロードディレクトリのパス
+$upload_dir = 'uploads/';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user_ID = $_SESSION['UserData']['id'];
+// アップロードディレクトリが存在するか確認し、存在しない場合は作成
+if (!is_dir($upload_dir)) {
+    mkdir($upload_dir, 0777, true);
+}
+
+if(isset($_SESSION['UserData']['id'])){
+    $user_id = $_SESSION['UserData']['id'];
     $user_name = $_POST['user_name'];
-    $pass =$_POST['pass']; // パスワードをハッシュ化
+    $user_picture_path = null;
 
-    try {
-        // データベース接続の確立
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        // SQLクエリの準備と実行
-        $stmt = $pdo->prepare("UPDATE UserData SET user_name=:user_name, pass=:pass WHERE user_ID=:user_ID");
-        $stmt->bindParam(':user_name', $user_name);
-        $stmt->bindParam(':pass', $pass);
-        $stmt->bindParam(':user_ID', $user_ID, PDO::PARAM_INT);
-
-        if ($stmt->execute()) {
-            echo "プロフィールが更新されました。";
-        } else {
-            echo "更新に失敗しました。";
+    if(isset($_FILES['user_picture']) && $_FILES['user_picture']['error'] == UPLOAD_ERR_OK){
+        $user_picture_path = $upload_dir . basename($_FILES['user_picture']['name']);
+        if (!move_uploaded_file($_FILES['user_picture']['tmp_name'], $user_picture_path)) {
+            echo "Failed to move uploaded file.";
+            exit();
         }
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
     }
 
-    // データベース接続を閉じる
-    $pdo = null;
-} else {
-    echo "Error: フォームデータが正しく設定されていません。";
-}
-?>
-<form action="home.php" method="post">
-<button type="submit">ホームに戻る</button>
+    $sql = "UPDATE UserData SET user_name = :user_name";
+    if($user_picture_path){
+        $sql .= ", user_picture = :user_picture";
+    }
+    $sql .= " WHERE user_ID = :user_id";
 
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':user_name', $user_name, PDO::PARAM_STR);
+    if($user_picture_path){
+        $stmt->bindParam(':user_picture', $user_picture_path, PDO::PARAM_STR);
+    }
+    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $stmt->execute();
+
+    header("Location: mypage.php");
+    exit();
+}
+
+ob_end_flush(); // 出力バッファをフラッシュして終了
+?>

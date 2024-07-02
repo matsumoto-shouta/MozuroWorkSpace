@@ -51,7 +51,8 @@ h2 {
 
 .gallery-item {
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
+    margin-bottom: 15%;
     width: 200px; /* 統一する幅 */
     height: 200px; /* 統一する高さ */
 }
@@ -79,7 +80,22 @@ h2 {
 .gallery-item:hover .overlay {
     opacity: 1;
 }
+.like-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: grey;
+}
 
+.like-button.liked {
+    color: red;
+}
+
+.like-count {
+    font-size: 16px;
+    margin-left: 8px;
+}
 
 /* ハンバーガーメニュー */
 .header {
@@ -165,4 +181,7 @@ h2 {
   .navigation__link:hover {
     background: #333;
   }
+}
+.likeBn{
+  margin-top:5%;
 }
