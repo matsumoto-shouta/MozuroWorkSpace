@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <title>画像ギャラリー</title>
     <link rel="stylesheet" href="css/index.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <!-- <script src="javascript/hamburger.js"></script> -->
     <script src="javascript/Preview.js"></script>
 </head>
 <body>
