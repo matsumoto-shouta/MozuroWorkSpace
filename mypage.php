@@ -23,11 +23,9 @@
             margin: 0;
         }
     </style>
-    <?php require 'hamburger.php';?>
+    <?php require 'hamburger.php'; ?>
 </head>
 <body>
-
-    <!-- <img src="image/kkrn_icon_user_13.png" alt="ユーザーアイコン" style="width: 100px; height: 100px;"><br> -->
     <?php
     if(isset($_SESSION['UserData']['id'])){
         $user_id = $_SESSION['UserData']['id'];
@@ -52,25 +50,34 @@
         <!-- ユーザーのアップロードした画像の表示 -->
         <div class="gallery">
             <?php
-            $sql = "SELECT Upload.*, Picture.picture_name, UserData.user_name 
-                    FROM Upload 
-                    JOIN Picture ON Upload.picture_ID = Picture.picture_ID 
-                    JOIN UserData ON UserData.user_ID = Upload.user_ID";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute();
+            if(isset($_SESSION['UserData']['id'])){
+                $user_id = $_SESSION['UserData']['id'];
+                $sql = "SELECT Picture.picture_name, Picture.picture_ID, UserData.user_name, Upload.caption 
+                        FROM Upload 
+                        JOIN Picture ON Upload.picture_ID = Picture.picture_ID 
+                        JOIN UserData ON UserData.user_ID = Upload.user_ID 
+                        WHERE Upload.user_ID = :user_id"; // ユーザーIDに基づく条件を追加
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT); // ユーザーIDをバインド
+                $stmt->execute();
 
-            if ($stmt->rowCount() > 0) {
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    echo "<div class='gallery-item'>";
-                    echo "<a href='image.php?id=" . htmlspecialchars($row['picture_ID']) . "'>";
-                    echo "<img src='" . htmlspecialchars($row['picture_name']) . "' alt=''>";
-                    echo "<div class='overlay'>";
-                    echo "<div class='text'>" . htmlspecialchars($row['user_name']) . "</div>";
-                    echo "<div class='text'>" . htmlspecialchars($row['caption']) . "</div>";
-                    echo "</div>";
-                    echo "</a>";
-                    echo "</div>";
+                if ($stmt->rowCount() > 0) {
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        echo "<div class='gallery-item'>";
+                        echo "<a href='image.php?id=" . htmlspecialchars($row['picture_ID']) . "'>";
+                        echo "<img src='" . htmlspecialchars($row['picture_name']) . "' alt=''>";
+                        echo "<div class='overlay'>";
+                        echo "<div class='text'>" . htmlspecialchars($row['user_name']) . "</div>";
+                        echo "<div class='text'>" . htmlspecialchars($row['caption']) . "</div>";
+                        echo "</div>";
+                        echo "</a>";
+                        echo "</div>";
+                    }
+                } else {
+                    echo "<p>アップロードされた画像がありません。</p>";
                 }
+            } else {
+                echo "<p>ユーザーがログインしていません。</p>";
             }
             ?>
         </div>
