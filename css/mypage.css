@@ -1,6 +1,6 @@
 .container {
     display: flex;
-    justify-content: flex-start; /* これにより、左詰めになります */
+    justify-content: center; /* これにより、中央に配置されます */
     flex-wrap: wrap;
 }
 
