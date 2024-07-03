@@ -16,6 +16,7 @@
         <li class="navigation__list-item"><a href="mypage.php" class="navigation__link">マイページ</a></li>
         <li class="navigation__list-item"><a href="index.php" class="navigation__link">アップロード</a></li>
         <li class="navigation__list-item"><a href="logout_input" class="navigation__link">ログアウト</a></li>
+        <li class="navigation__list-item"><a href="User_list.php" class="navigation__link">DM</a></li>
         </ul>
     </nav>
     </header>
