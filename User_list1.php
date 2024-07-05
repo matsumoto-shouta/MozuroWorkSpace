@@ -14,9 +14,6 @@ $stmt = $pdo->prepare($sql);
 $stmt->bindParam(':current_user_id', $current_user_id, PDO::PARAM_INT);
 $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-// デフォルト画像のURL
-$default_picture = 'img/defalt.png'; // 適切なパスに置き換えてください
 ?>
 
 <!DOCTYPE html>
@@ -86,12 +83,8 @@ $default_picture = 'img/defalt.png'; // 適切なパスに置き換えてくだ�
         <h2>ユーザー一覧</h2>
         <ul class="user-list">
             <?php foreach ($users as $user): ?>
-                <?php
-                // 画像URLが空の場合、デフォルト画像を使用
-                $user_picture = !empty($user['user_picture']) ? $user['user_picture'] : $default_picture;
-                ?>
                 <li class="user-item">
-                    <img src="<?php echo htmlspecialchars($user_picture); ?>" alt="ユーザーアイコン">
+                    <img src="<?php echo htmlspecialchars($user['user_picture']); ?>" alt="ユーザーアイコン">
                     <a href="dm.php?user_id=<?php echo htmlspecialchars($user['user_ID']); ?>">
                         <?php echo htmlspecialchars($user['user_name']); ?>
                     </a>
