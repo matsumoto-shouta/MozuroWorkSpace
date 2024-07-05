@@ -1,3 +1,7 @@
+body{
+	background: linear-gradient(106deg, #6fad44, #34c2db);
+	font-family: 'Helvetica Neue', sans-serif;
+}
 .all{
     margin-left:20%;
     margin-right:20%;
@@ -143,4 +147,6 @@
   .likeBn{
 	margin-top:5%;
   }
-
+img{
+	border-radius: 10px;
+}
