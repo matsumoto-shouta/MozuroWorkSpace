@@ -13,27 +13,12 @@ $destination_user_id = $_GET['user_id'];
 // メッセージ送信処理
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $text = $_POST['text'];
-    $imagePath = NULL;
-
-    // 画像のアップロード処理
-    // if (isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
-    //     $uploadDir = 'uploads/';
-    //     $uploadFile = $uploadDir . basename($_FILES['image']['name']);
-    //     $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
-    //     $allowedTypes = ['jpg', 'jpeg', 'png', 'gif'];
-
-    //     // 画像のサイズと種類の検証
-    //     if (in_array($imageFileType, $allowedTypes) && $_FILES['image']['size'] < 5000000) { // 5MB以下
-    //         if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile)) {
-    //             $imagePath = $uploadFile;
-    //         }
-    //     }
-    // }
+    $image = isset($_POST['image']) ? $_POST['image'] : NULL;
 
     $sql = "INSERT INTO message (text, image, user_id, destination_user_id) VALUES (:text, :image, :user_id, :destination_user_id)";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':text', $text, PDO::PARAM_STR);
-    $stmt->bindParam(':image', $imagePath, PDO::PARAM_STR);
+    $stmt->bindParam(':image', $image, PDO::PARAM_STR);
     $stmt->bindParam(':user_id', $current_user_id, PDO::PARAM_INT);
     $stmt->bindParam(':destination_user_id', $destination_user_id, PDO::PARAM_INT);
     $stmt->execute();
@@ -110,9 +95,13 @@ $destination_user = $stmt->fetch(PDO::FETCH_ASSOC);
             padding: 10px;
             font-size: 16px;
         }
-        .message-form input[type="file"] {
+        .message-form input[type="text"] {
             width: 100%;
             margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
         }
         .message-form button {
             padding: 10px;
@@ -154,10 +143,9 @@ $destination_user = $stmt->fetch(PDO::FETCH_ASSOC);
             margin: 0;
         }
         .message-item img {
-            max-width: 100%;
-            max-height: 200px;
+            max-width: 100px;
+            max-height: 100px;
             margin-top: 10px;
-            border-radius: 5px;
         }
         .message-meta {
             font-size: 12px;
@@ -175,9 +163,9 @@ $destination_user = $stmt->fetch(PDO::FETCH_ASSOC);
             <h2><?php echo htmlspecialchars($destination_user['user_name']); ?></h2>
         </div>
 
-        <form class="message-form" action="" method="post" enctype="multipart/form-data">
+        <form class="message-form" action="" method="post">
             <textarea name="text" placeholder="メッセージを入力してください"></textarea>
-            <!-- <input type="file" name="image" accept="image/*"> -->
+            <input type="text" name="image" placeholder="画像のパス（任意）">
             <button type="submit">送信</button>
         </form>
 
