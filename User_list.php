@@ -24,64 +24,10 @@ $default_picture = 'img/defalt.png'; // 適切なパスに置き換えてくだ�
 <head>
     <meta charset="UTF-8">
     <title>ユーザー一覧</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            width: 90%;
-            max-width: 800px;
-            margin: 20px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .user-list {
-            list-style: none;
-            padding: 0;
-        }
-        .user-item {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s;
-        }
-        .user-item:hover {
-            background-color: #f9f9f9;
-        }
-        .user-item img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 15px;
-        }
-        .user-item a {
-            text-decoration: none;
-            color: #333;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        .user-item a:hover {
-            color: #007BFF;
-        }
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-    </style>
-        <?php require 'hamburger.php'; ?>
+    <link rel="stylesheet" href="css/user_list.css">
+    <?php require 'hamburger.php'; ?>
 </head>
 <body>
-    <?php require "hamburger.php"; ?>
     <div class="container">
         <h2>ユーザー一覧</h2>
         <ul class="user-list">
