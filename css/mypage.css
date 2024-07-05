@@ -1,42 +1,43 @@
 .container {
-    display: flex;
-    justify-content: center; /* これにより、中央に配置されます */
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center; /* 中央に配置します */
+  flex-wrap: wrap;
 }
 
 .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start; /* これにより、左詰めになります */
-    width: 100%; /* 必要に応じて調整 */
-    max-width: 1200px; /* 必要に応じて調整 */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 1行に3つのカラムを設定 */
+  gap: 10px; /* 画像の間に少し間隔を持たせる */
+  width: 100%; /* 必要に応じて調整 */
+  max-width: 1200px; /* 必要に応じて調整 */
 }
 
 .gallery-item {
-    width: 200px; /* 固定幅を設定 */
-    height: 200px; /* 固定高さを設定 */
-    margin: 10px; /* 画像の間に少し間隔を持たせる */
-    box-sizing: border-box;
-    position: relative;
-    overflow: hidden; /* これにより、画像が枠内に収まるようにします */
+  width: 100%; /* gridの設定に合わせるため100%に変更 */
+  height: 200px; /* 固定高さを設定 */
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden; /* これにより、画像が枠内に収まるようにします */
 }
 
 .gallery-item img {
-    width: 100%;
-    height: auto;
-    object-fit: cover; /* 画像がコンテナに収まるようにします */
-    display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* 画像がコンテナに収まるようにします */
+  display: block;
 }
 
 .overlay {
-    position: absolute;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5); /* 半透明の黒 */
-    color: #fff;
-    width: 100%;
-    text-align: center;
-    padding: 10px; /* オーバーレイのテキストに余白を追加 */
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* 半透明の黒 */
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  padding: 10px; /* オーバーレイのテキストに余白を追加 */
 }
+
+
 
 /* ハンバーガーメニュー */
 .header {
