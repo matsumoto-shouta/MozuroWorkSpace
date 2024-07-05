@@ -20,7 +20,6 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css">
     <title>ユーザー一覧</title>
     <style>
         body {
@@ -76,6 +75,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
             color: #333;
         }
     </style>
+        <?php require 'hamburger.php'; ?>
 </head>
 <body>
     <?php require "hamburger.php"; ?>
