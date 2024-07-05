@@ -26,6 +26,9 @@
     <?php require 'hamburger.php'; ?>
 </head>
 <body>
+<form action="edit_profile.php" method="post">
+        <button type="submit">プロフィールを編集</button>
+    </form>
     <?php
     if(isset($_SESSION['UserData']['id'])){
         $user_id = $_SESSION['UserData']['id'];
@@ -82,13 +85,5 @@
             ?>
         </div>
     </div>
-    
-    <form action="edit_profile.php" method="post">
-        <button type="submit">プロフィールを編集</button>
-    </form><br>
-    
-    <form action="home.php" method="post">
-        <button type="submit">ホームに戻る</button>
-    </form>
 </body>
 </html>
