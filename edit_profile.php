@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/mypage.css">
+    <?php require 'hamburger.php'; ?>
     <title>プロフィール編集</title>
     <style>
         .profile {
