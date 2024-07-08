@@ -6,23 +6,6 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/mypage.css">
     <title>マイページ</title>
-    <style>
-        .profile {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        .profile img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-right: 15px;
-            border: 3px solid #000; /* 画像周りの枠線 */
-        }
-        .profile h2 {
-            margin: 0;
-        }
-    </style>
     <?php require 'hamburger.php'; ?>
 </head>
 <body>
