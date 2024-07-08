@@ -1,11 +1,38 @@
 <?php session_start(); ?>
+
+<head>
 <link rel="stylesheet" href="css/home.css?v=1.0.1">
 
 
 <?php require 'db-connect.php'; ?>  
 <div class="container">
     <?php require "hamburger.php"; ?>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+    .like-button {
+        background: none;
+        border: none;
+       
+        cursor: pointer;
+        font-size: 24px;
+        color: #ccc;
+    }
+    .like-button.liked .fa-heart {
+        color: red;
+    }
+    .like-button .fa-heart {
+        color: #ccc;
+    }
+    .like-button:hover .fa-heart {
+        color: red;
+    }
+    .like-count {
+        font-size: 18px;
+        margin-left: 10px;
+    }
+</style>
+</head>
+<body>    
     <h2>画像ギャラリー</h2>
     <div class="gallery">
         <?php
@@ -45,33 +72,9 @@
                 echo "<p>ギャラリーに画像がありません。</p>";
             }
         } else {
-            echo "<p>ログインしてください!</p>";
+            echo "<p>ログインしてください</p>";
         }
         ?>
     </div>
 </div>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<style>
-    .like-button {
-        background: none;
-        border: none;
-       
-        cursor: pointer;
-        font-size: 24px;
-        color: #ccc;
-    }
-    .like-button.liked .fa-heart {
-        color: red;
-    }
-    .like-button .fa-heart {
-        color: #ccc;
-    }
-    .like-button:hover .fa-heart {
-        color: red;
-    }
-    .like-count {
-        font-size: 18px;
-        margin-left: 10px;
-    }
-</style>
+</body>
