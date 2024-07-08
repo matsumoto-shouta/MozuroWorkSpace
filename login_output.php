@@ -1,7 +1,9 @@
 <?php session_start(); ?>
 <?php require 'db-connect.php'; ?>
 <link rel="stylesheet" href="css/Login.css">
+<div class="al">
 <img src="image/instakiro.png" width="100" height="100">
+
 <h1>ログイン<h1>
 <?php 
 unset($_SESSION['UserData']);
@@ -31,16 +33,19 @@ if(isset($_SESSION['UserData'])){
     echo '<form action="home.php" method="post">';
     echo '<button class="btn3" type="submit">ホーム画面へ</button>';
     echo '</form>';
+    echo '</div>';
 
 }else{
     echo '<p class="log">ログイン名またはパスワードが違います。</p>';
     echo '<form action="login_input.php" method="post">';
     echo '<button class="btn3" type="submit">ログイン画面へ</button>';
     echo '</form>';
+    echo '</div>';
 }
 }else{
     echo '<p class="log">ログイン名またはパスワードを入力してください。</p>';
     echo '<form action="login_input.php" method="post">';
     echo '<button class="btn3" type="submit">ログイン画面へ</button>';
     echo '</form>';
+    echo '</div>';
 }
