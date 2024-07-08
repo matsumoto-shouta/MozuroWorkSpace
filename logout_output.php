@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<div class="all">
+<div class="al">
 <link rel="stylesheet" href="css/Logout.css">
     <div class="flex">
 <figure class="image">
