@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fafafa;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h2 {
+    margin-top: 20px;
+    font-size: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  }
+  
+  .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+  }
+  .gallery {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+  }
+  .user-info {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 5px;
+      border-radius: 5px;
+  }
+  .user-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 5px;
+  }
+  .user-name {
+      font-size: 14px;
+      font-weight: bold;
+  }
+  .gallery-item img {
+      width: 100%;
+      display: block;
+  }
+  .post-footer {
+      padding: 10px;
+  }
+  .post-actions {
+      display: flex;
+      align-items: center;
+  }
+  .like-form {
+      margin-right: 10px;
+  }
+  .like-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 24px;
+      color: #ccc;
+  }
+  .like-button.liked .fa-heart {
+      color: red;
+  }
+  .like-button .fa-heart {
+      color: #ccc;
+      margin-right: 5px;
+  }
+  .like-button:hover .fa-heart {
+      color: red;
+  }
+  .like-count {
+      margin-left: 5px;
+  }
+  .post-caption {
+      margin-top: 8px;
+      font-size: 14px;
+  }
+  
