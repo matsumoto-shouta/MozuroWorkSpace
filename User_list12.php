@@ -16,7 +16,7 @@ $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // デフォルト画像のURL
-$default_picture = 'img/default.png'; // 適切なパスに置き換えてください
+$default_picture = 'img/defalt.png'; // 適切なパスに置き換えてください
 ?>
 
 <!DOCTYPE html>
@@ -34,18 +34,13 @@ $default_picture = 'img/default.png'; // 適切なパスに置き換えてくだ
             <?php foreach ($users as $user): ?>
                 <?php
                 // 画像URLが空の場合、デフォルト画像を使用
-                $user_picture = !empty($user['user_picture']) ? htmlspecialchars($user['user_picture']) : $default_picture;
+                $user_picture = !empty($user['user_picture']) ? $user['user_picture'] : $default_picture;
                 ?>
                 <li class="user-item">
-                    <img src="<?php echo $user_picture; ?>" alt="ユーザーアイコン">
-                    <div class="links">
-                        <a href="profile.php?user_id=<?php echo htmlspecialchars($user['user_ID']); ?>">
-                            <?php echo htmlspecialchars($user['user_name']); ?> のプロフィール
-                        </a>
-                        <a href="dm.php?user_id=<?php echo htmlspecialchars($user['user_ID']); ?>">
-                            DM
-                        </a>
-                    </div>
+                    <img src="<?php echo htmlspecialchars($user_picture); ?>" alt="ユーザーアイコン">
+                    <a href="dm.php?user_id=<?php echo htmlspecialchars($user['user_ID']); ?>">
+                        <?php echo htmlspecialchars($user['user_name']); ?>
+                    </a>
                 </li>
             <?php endforeach; ?>
         </ul>
