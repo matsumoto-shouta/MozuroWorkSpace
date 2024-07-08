@@ -16,20 +16,20 @@ $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // デフォルト画像のURL
-$default_picture = 'img/default.png'; // 適切なパスに置き換えてください
+$default_picture = 'img/defalt.png'; // 適切なパスに置き換えてください
 ?>
 
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>ユーザー一覧</title>
+    <title>ユーザー　ー覧</title>
     <link rel="stylesheet" href="css/user_list.css">
     <?php require 'hamburger.php'; ?>
 </head>
 <body>
     <div class="container">
-        <h2>ユーザー一覧</h2>
+        <h2>ユーザー　ー覧</h2>
         <ul class="user-list">
             <?php foreach ($users as $user): ?>
                 <?php
