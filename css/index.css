@@ -2,7 +2,7 @@ body{
 	background: linear-gradient(106deg, #6fad44, #34c2db);
     font-family: 'Helvetica Neue', sans-serif;
 }
-.logo{
+img{
     border-radius: 10px;
   }
 h2{
@@ -102,7 +102,7 @@ h2{
 .preImg{
 	position: relative;
 	text-align: center;
-	margin:10px 42%;
+	margin-top:10px;
     width: 180px;
 	height: auto;
 	border: 10px solid #FFF;
