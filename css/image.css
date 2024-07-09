@@ -37,3 +37,43 @@ h1 {
     margin-top: 15px;
     color: #555;
 }
+.container {
+    position: relative;
+    width: 600px; /* 画像の幅に合わせて調整 */
+    margin: auto; /* 中央に寄せる */
+}
+
+.post {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.post-image {
+    width: 100%; /* 画像を幅いっぱいに表示 */
+    display: block;
+}
+
+.canvas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* キャンバスがマウスイベントをキャプチャしないようにする */
+    overflow: hidden; /* 画像からはみ出した部分を非表示にする */
+}
+
+.comment-flow {
+    position: absolute;
+    white-space: nowrap;
+    font-size: 16px; /* フォントサイズを調整 */
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    animation: move 5s linear infinite; /* コメントを流すアニメーション */
+}
+
+@keyframes move {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100vw); }
+}

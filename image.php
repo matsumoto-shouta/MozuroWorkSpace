@@ -1,6 +1,7 @@
 <?php
 session_start();
 require 'db-connect.php';
+require "hamburger.php";
 
 // コメントが投稿された場合の処理
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && isset($_POST['picture_id']) && isset($_SESSION['UserData']['id'])) {
@@ -37,9 +38,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="javascript/image.js"></script>
     <link rel="stylesheet" href="css/image.css">
     <title>画像詳細</title>
-    <style>
+    <!-- <style>
         .container {
             position: relative;
             width: 600px; /* 画像の幅に合わせて調整 */
@@ -80,11 +82,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100vw); }
         }
-    </style>
+    </style> -->
 </head>
 <body>
 <div class="container">
-    <a href='home.php'>ホーム画面へ</a>
+    <!-- <a href='home.php'>ホーム画面へ</a> -->
     <!-- 表示/非表示ボタン -->
     <div>
         <button id="toggleComments">コメントを非表示</button>
@@ -150,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
     </div>
 
     <!-- コメントをニコニコ動画風に流すスクリプト -->
-    <script>
+    <!-- <script>
         document.addEventListener("DOMContentLoaded", function() {
             const commentsContainer = document.querySelector(".comments");
             const canvasContainer = document.getElementById("canvasContainer"); // IDで取得する
@@ -196,7 +198,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
 
                 commentsVisible = !commentsVisible;
             });
-        });
+        }); -->
     </script>
 
 </div>
