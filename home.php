@@ -1,17 +1,21 @@
 <?php session_start(); ?>
-<link rel="stylesheet" href="css/home.css">
+
+<?php require 'db-connect.php'; ?> 
+<?php require "hamburger.php"; ?> 
 
 <head>
+
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="javascript/hamburger.js"></script>
+
 </head>
 
-<?php require 'db-connect.php'; ?>  
 <div class="container">
-<?php require "hamburger.php"; ?>
+
     <!-- ここまでハンバーガーメニュー -->
     
-    <h2>画像ギャラリー</h2>
+    <h2>画像ギャラリー</h2><a href="stories.php">ストーリー</a>
     <div class="gallery">
         <?php
         if(isset($_SESSION['UserData']['id'])){
@@ -60,7 +64,4 @@
         ?>
     </div>
 </div>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<style>
  
