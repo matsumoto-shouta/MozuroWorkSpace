@@ -1,7 +1,9 @@
 <?php
 session_start();
 require 'db-connect.php';
+?>
 
+<?PHP
 if (!isset($_SESSION['UserData']['id'])) {
     header('Location: login.php'); // ログインページにリダイレクト
     exit;
