@@ -71,8 +71,8 @@ $destination_user = $stmt->fetch(PDO::FETCH_ASSOC);
     <title>DM</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background: linear-gradient(106deg, #6fad44, #34c2db);
+            font-family: 'Helvetica Neue', sans-serif;
             margin: 0;
             padding: 0;
         }
@@ -102,7 +102,7 @@ $destination_user = $stmt->fetch(PDO::FETCH_ASSOC);
             margin-bottom: 20px;
         }
         .message-form textarea {
-            width: 100%;
+            
             height: 100px;
             margin-bottom: 10px;
             border: 1px solid #ccc;

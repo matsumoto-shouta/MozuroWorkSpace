@@ -34,6 +34,7 @@ $user_name = htmlspecialchars($user['user_name']);
     <?php require 'hamburger.php'; ?>
 </head>
 <body>
+    <div class="al">
     <div class="profile">
         <img src="<?php echo $user_picture; ?>" alt="ユーザーアイコン">
         <h2><?php echo $user_name; ?></h2>
@@ -73,6 +74,7 @@ $user_name = htmlspecialchars($user['user_name']);
             }
             ?>
         </div>
+    </div>
     </div>
 </body>
 </html>

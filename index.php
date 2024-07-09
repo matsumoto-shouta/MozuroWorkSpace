@@ -8,7 +8,7 @@
     <script src="javascript/Preview.js"></script>
 </head>
 <body>
-
+    <div class="al">
     <h2>画像アップロードフォーム</h2>
     <form action="upload.php" method="post" enctype="multipart/form-data">
         <div class="file">
@@ -28,6 +28,6 @@
 
         
     </form>
-
+</div>
    
 </body>
