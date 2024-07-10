@@ -44,10 +44,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
     <link rel="stylesheet" href="css/image.css"> -->
     <title>画像詳細</title>
     <style>
+        body {
+        background: linear-gradient(106deg, #6fad44, #34c2db);
+        font-family: 'Helvetica Neue', sans-serif;
+        }
         .container {
             position: relative;
             width: 600px; /* 画像の幅に合わせて調整 */
             margin: auto; /* 中央に寄せる */
+
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 20px;
         }
 
         .post {
