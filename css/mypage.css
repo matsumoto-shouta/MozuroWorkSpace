@@ -1,15 +1,18 @@
-body{
-	background: linear-gradient(106deg, #6fad44, #34c2db);
-	font-family: 'Helvetica Neue', sans-serif;
+body {
+  background: linear-gradient(106deg, #6fad44, #34c2db);
+  font-family: 'Helvetica Neue', sans-serif;
 }
-.p{
+
+.p {
   margin-left: 5%;
 }
+
 .profile {
   display: flex;
   align-items: center;
   margin-bottom: 15px;
 }
+
 .profile img {
   width: 100px;
   height: 100px;
@@ -17,6 +20,7 @@ body{
   margin-right: 15px;
   border: 3px solid #000; /* 画像周りの枠線 */
 }
+
 .profile h2 {
   margin: 0;
 }
@@ -25,15 +29,11 @@ body{
   display: flex;
   justify-content: center; /* 中央に配置します */
   flex-wrap: wrap;
-
-  padding-left: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-right: 10px;
+  padding: 10px;
   margin-top: 2%;
-  margin-left:10%;
-  margin-right:10%;
-	text-align: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
   background: rgba(255, 255, 255, 0.75);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
@@ -60,9 +60,10 @@ body{
 
 .gallery-item img {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover; /* 画像がコンテナに収まるようにします */
   display: block;
+  aspect-ratio: 1 / 1; /* 画像の縦横比を1:1に設定 */
 }
 
 .overlay {
