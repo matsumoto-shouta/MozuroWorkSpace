@@ -52,10 +52,11 @@
                         echo "<div class='gallery-item'>";
                         echo "<a href='image.php?id=" . htmlspecialchars($row['picture_ID']) . "'>";
                         echo "<img src='" . htmlspecialchars($row['picture_name']) . "' alt=''>";
-                        echo "<div class='overlay'>";
-                        echo "<div class='text'>" . htmlspecialchars($row['user_name']) . "</div>";
-                        echo "<div class='text'>" . htmlspecialchars($row['caption']) . "</div>";
-                        echo "</div>";
+                        if (!empty($row['caption'])) { // キャプションがある場合のみオーバーレイを表示
+                            echo "<div class='overlay'>";
+                            echo "<div class='text'>" . htmlspecialchars($row['caption']) . "</div>";
+                            echo "</div>";
+                        }
                         echo "</a>";
                         echo "</div>";
                     }
