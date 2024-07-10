@@ -25,13 +25,13 @@ $default_picture = 'img/defalt.png'; // 適切なパスに置き換えてくだ�
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>ユーザー　ー覧</title>
+    <title>ユーザー一覧</title>
     <link rel="stylesheet" href="css/user_list.css">
     <?php require 'hamburger.php'; ?>
 </head>
 <body>
     <div class="container">
-        <h2>ユーザー　ー覧</h2>
+        <h2>ユーザー一覧</h2>
         <ul class="user-list">
             <?php foreach ($users as $user): ?>
                 <?php
@@ -39,14 +39,13 @@ $default_picture = 'img/defalt.png'; // 適切なパスに置き換えてくだ�
                 $user_picture = !empty($user['user_picture']) ? htmlspecialchars($user['user_picture']) : $default_picture;
                 ?>
                 <li class="user-item">
-                    <img src="<?php echo $user_picture; ?>" alt="ユーザーアイコン">
+                    <div class="user-info">
+                        <img src="<?php echo $user_picture; ?>" alt="ユーザーアイコン">
+                        <div class="user-name"><?php echo htmlspecialchars($user['user_name']); ?></div>
+                    </div>
                     <div class="links">
-                        <a href="profile.php?user_id=<?php echo htmlspecialchars($user['user_ID']); ?>">
-                            <?php echo htmlspecialchars($user['user_name']); ?> のプロフィール
-                        </a>
-                        <a href="dm.php?user_id=<?php echo htmlspecialchars($user['user_ID']); ?>">
-                            DM
-                        </a>
+                        <a href="profile.php?user_id=<?php echo htmlspecialchars($user['user_ID']); ?>" class="profile-link">プロフィール</a>
+                        <a href="dm.php?user_id=<?php echo htmlspecialchars($user['user_ID']); ?>" class="dm-link">DM</a>
                     </div>
                 </li>
             <?php endforeach; ?>
