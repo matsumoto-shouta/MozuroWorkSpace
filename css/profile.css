@@ -4,8 +4,14 @@ body{
 }
 .al{
     padding-bottom: 3%;
+<<<<<<< HEAD
     padding-top: 3%;
     text-align: center;
+=======
+	padding-top: 3%;
+    margin-top: 3%;
+	text-align: center;
+>>>>>>> 2ad09f78b0c864df40189d2715f13ecdb136c3bf
     background: rgba(255, 255, 255, 0.75);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
@@ -15,6 +21,7 @@ body{
 }
 .profile {
     display: flex;
+    padding-left: 2%;
     align-items: center;
     margin-bottom: 15px;
 }
@@ -30,7 +37,14 @@ body{
 }
 .container {
     display: flex;
+<<<<<<< HEAD
     justify-content: center;
+=======
+    padding-left: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-right: 2%;
+>>>>>>> 2ad09f78b0c864df40189d2715f13ecdb136c3bf
     flex-wrap: wrap;
     padding-left: 10px;
     padding-top: 10px;
