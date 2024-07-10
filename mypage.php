@@ -9,9 +9,7 @@
     <?php require 'hamburger.php'; ?>
 </head>
 <body>
-<form action="edit_profile.php" method="post">
-        <button type="submit">プロフィールを編集</button>
-    </form>
+
     <?php
     if(isset($_SESSION['UserData']['id'])){
         $user_id = $_SESSION['UserData']['id'];
@@ -26,12 +24,16 @@
         $user_name = htmlspecialchars($user['user_name']);
     }
     ?>
-
+    <div class="p">
     <div class="profile">
         <img src="<?php echo $user_picture; ?>" alt="ユーザーアイコン">
         <h2><?php echo $user_name; ?></h2>
     </div>
-
+    <form action="edit_profile.php" method="post">
+        <button type="submit">プロフィールを編集</button>
+    </form>
+    </div>
+    
     <div class="container">
         <!-- ユーザーのアップロードした画像の表示 -->
         <div class="gallery">
