@@ -6,29 +6,10 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/mypage.css">
     <title>マイページ</title>
-    <style>
-        .profile {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        .profile img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-right: 15px;
-            border: 3px solid #000; /* 画像周りの枠線 */
-        }
-        .profile h2 {
-            margin: 0;
-        }
-    </style>
     <?php require 'hamburger.php'; ?>
 </head>
 <body>
-<form action="edit_profile.php" method="post">
-        <button type="submit">プロフィールを編集</button>
-    </form>
+
     <?php
     if(isset($_SESSION['UserData']['id'])){
         $user_id = $_SESSION['UserData']['id'];
@@ -43,12 +24,16 @@
         $user_name = htmlspecialchars($user['user_name']);
     }
     ?>
-
+    <div class="p">
     <div class="profile">
         <img src="<?php echo $user_picture; ?>" alt="ユーザーアイコン">
         <h2><?php echo $user_name; ?></h2>
     </div>
-
+    <form action="edit_profile.php" method="post">
+        <button type="submit">プロフィールを編集</button>
+    </form>
+    </div>
+    
     <div class="container">
         <!-- ユーザーのアップロードした画像の表示 -->
         <div class="gallery">
@@ -69,10 +54,11 @@
                         echo "<div class='gallery-item'>";
                         echo "<a href='image.php?id=" . htmlspecialchars($row['picture_ID']) . "'>";
                         echo "<img src='" . htmlspecialchars($row['picture_name']) . "' alt=''>";
-                        echo "<div class='overlay'>";
-                        echo "<div class='text'>" . htmlspecialchars($row['user_name']) . "</div>";
-                        echo "<div class='text'>" . htmlspecialchars($row['caption']) . "</div>";
-                        echo "</div>";
+                        if (!empty($row['caption'])) { // キャプションがある場合のみオーバーレイを表示
+                            echo "<div class='overlay'>";
+                            echo "<div class='text'>" . htmlspecialchars($row['caption']) . "</div>";
+                            echo "</div>";
+                        }
                         echo "</a>";
                         echo "</div>";
                     }

@@ -1,10 +1,28 @@
+body{
+	background: linear-gradient(106deg, #6fad44, #34c2db);
+    font-family: 'Helvetica Neue', sans-serif;
+}
+img{
+    border-radius: 10px;
+  }
 h2{
     text-align: center;
     margin: auto;
     margin-top: 32px;
     margin-bottom: 60px;
 }
-
+.al{
+    margin-left:20%;
+    margin-right:20%;
+	padding-top: 3%;
+	text-align: center;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.29);
+}
 #caption{
     width: 380px;
     height: 180px;
@@ -84,7 +102,7 @@ h2{
 .preImg{
 	position: relative;
 	text-align: center;
-	margin:10px 42%;
+	margin-top:10px;
     width: 180px;
 	height: auto;
 	border: 10px solid #FFF;

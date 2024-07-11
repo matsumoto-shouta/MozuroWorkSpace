@@ -1,9 +1,7 @@
 <?php
 session_start();
 require 'db-connect.php';
-?>
 
-<?PHP
 if (!isset($_SESSION['UserData']['id'])) {
     header('Location: login.php'); // ログインページにリダイレクト
     exit;
@@ -36,17 +34,13 @@ $default_picture = 'img/defalt.png'; // 適切なパスに置き換えてくだ�
             <?php foreach ($users as $user): ?>
                 <?php
                 // 画像URLが空の場合、デフォルト画像を使用
-                $user_picture = !empty($user['user_picture']) ? htmlspecialchars($user['user_picture']) : $default_picture;
+                $user_picture = !empty($user['user_picture']) ? $user['user_picture'] : $default_picture;
                 ?>
                 <li class="user-item">
-                    <div class="user-info">
-                        <img src="<?php echo $user_picture; ?>" alt="ユーザーアイコン">
-                        <div class="user-name"><?php echo htmlspecialchars($user['user_name']); ?></div>
-                    </div>
-                    <div class="links">
-                        <a href="profile.php?user_id=<?php echo htmlspecialchars($user['user_ID']); ?>" class="profile-link">プロフィール</a>
-                        <a href="dm.php?user_id=<?php echo htmlspecialchars($user['user_ID']); ?>" class="dm-link">DM</a>
-                    </div>
+                    <img src="<?php echo htmlspecialchars($user_picture); ?>" alt="ユーザーアイコン">
+                    <a href="dm.php?user_id=<?php echo htmlspecialchars($user['user_ID']); ?>">
+                        <?php echo htmlspecialchars($user['user_name']); ?>
+                    </a>
                 </li>
             <?php endforeach; ?>
         </ul>

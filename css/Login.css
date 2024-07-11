@@ -1,8 +1,25 @@
 /* Login_inputのデザイン */
 
-
+body{
+	background: linear-gradient(106deg, #6fad44, #34c2db);
+	font-family: 'Helvetica Neue', sans-serif;
+}
 /*白い枠*/
 .all{
+    margin-left:20%;
+    margin-right:20%;
+	padding-top: 3%;
+	text-align: center;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.29);
+
+}
+.al{
+	margin-top: 5%;
     margin-left:20%;
     margin-right:20%;
 	padding-top: 3%;
@@ -207,4 +224,7 @@ body{
 .btn3:hover {
 	background: #d4d7f7;
 	color: #275cd9;
+}
+img{
+	border-radius: 10px;
 }

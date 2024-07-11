@@ -1,7 +1,10 @@
 <?php
+ob_start();
 session_start();
 require 'db-connect.php';
-
+require "hamburger.php";
+?>
+<?PHP
 // コメントが投稿された場合の処理
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && isset($_POST['picture_id']) && isset($_SESSION['UserData']['id'])) {
     $comment_text = htmlspecialchars($_POST['comments_text']);
@@ -37,13 +40,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/image.css">
+    <!-- <script src="javascript/image.js"></script>
+    <link rel="stylesheet" href="css/image.css"> -->
     <title>画像詳細</title>
     <style>
+        body {
+        background: linear-gradient(106deg, #6fad44, #34c2db);
+        font-family: 'Helvetica Neue', sans-serif;
+        }
         .container {
             position: relative;
             width: 600px; /* 画像の幅に合わせて調整 */
             margin: auto; /* 中央に寄せる */
+
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 20px;
         }
 
         .post {
@@ -84,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
 </head>
 <body>
 <div class="container">
-    <a href='home.php'>ホーム画面へ</a>
+    <!-- <a href='home.php'>ホーム画面へ</a> -->
     <!-- 表示/非表示ボタン -->
     <div>
         <button id="toggleComments">コメントを非表示</button>
