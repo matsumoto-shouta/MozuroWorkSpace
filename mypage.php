@@ -30,7 +30,7 @@
         <h2><?php echo $user_name; ?></h2>
     </div>
     <form action="edit_profile.php" method="post">
-        <button type="submit">プロフィールを編集</button>
+        <button class="btn"type="submit">プロフィールを編集</button>
     </form>
     </div>
     
