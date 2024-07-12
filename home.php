@@ -15,7 +15,7 @@
 
     <!-- ここまでハンバーガーメニュー -->
     
-    <h2>画像ギャラリー</h2><a href="stories.php">ストーリー</a>
+    <h2>投稿一覧</h2>
     <div class="gallery">
         <?php
         if(isset($_SESSION['UserData']['id'])){
@@ -26,7 +26,8 @@
                     JOIN Picture ON Upload.picture_ID = Picture.picture_ID 
                     JOIN UserData ON UserData.user_ID = Upload.user_ID
                     LEFT JOIN likes ON Picture.picture_ID = likes.post_id
-                    GROUP BY Picture.picture_ID";
+                    GROUP BY Picture.picture_ID
+                    ORDER BY  up_ID desc";
             $stmt = $pdo->prepare($sql);
             $stmt->execute(['user_ID' => $user_ID]);
 

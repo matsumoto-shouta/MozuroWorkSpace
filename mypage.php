@@ -30,7 +30,7 @@
         <h2><?php echo $user_name; ?></h2>
     </div>
     <form action="edit_profile.php" method="post">
-        <button type="submit">プロフィールを編集</button>
+        <button class="btn"type="submit">プロフィールを編集</button>
     </form>
     </div>
     
@@ -44,7 +44,8 @@
                         FROM Upload 
                         JOIN Picture ON Upload.picture_ID = Picture.picture_ID 
                         JOIN UserData ON UserData.user_ID = Upload.user_ID 
-                        WHERE Upload.user_ID = :user_id"; // ユーザーIDに基づく条件を追加
+                        WHERE Upload.user_ID = :user_id 
+                        ORDER BY Upload.up_ID DESC"; // アップロード日時で降順にソート
                 $stmt = $pdo->prepare($sql);
                 $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT); // ユーザーIDをバインド
                 $stmt->execute();

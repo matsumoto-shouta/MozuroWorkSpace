@@ -106,6 +106,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
         <button id="toggleComments">コメントを非表示</button>
     </div>
     <?php
+
+// ユーザーIDの取得
+$user_id = isset($_SESSION['UserData']['id']) ? $_SESSION['UserData']['id'] : null;
+
+if ($user_id === null) {
+    die("ユーザーIDが設定されていません。");
+}
+
+// ユーザーの投稿を取得（ここでは一つの投稿を仮定）
+$stmt = $pdo->prepare("SELECT up_ID, caption FROM Upload WHERE user_ID = ? LIMIT 1");
+$stmt->execute([$user_id]);
+$upload = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if ($upload === false) {
+    echo "投稿が見つかりません。";
+    exit();
+}
+?>
+a
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ユーザーの投稿</title>
+</head>
+<body>
+
+    <div>
+        <form method="POST" action="delete.php">
+            <input type="hidden" name="up_ID" value="<?php echo $upload['up_ID']; ?>">
+            <button type="submit" onclick="return confirm('本当に削除しますか？');">削除</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+    <?php
     if (isset($_GET['id'])) {
         $picture_id = htmlspecialchars($_GET['id']);
         $sql = "SELECT * FROM Upload 
