@@ -62,28 +62,30 @@
         $user_name = htmlspecialchars($user['user_name']);
     }
     ?>
-
+    <div class="r">
     <div class="profile">
         <img src="<?php echo $user_picture; ?>" alt="ユーザーアイコン" id="profilePicture">
         <h2><?php echo $user_name; ?></h2>
     </div>
-
+    </div>
+    <div class="s">
     <form action="update_profile.php" method="post" enctype="multipart/form-data">
         <label for="user_name">ユーザー名:</label><br>
         <input type="text" id="user_name" name="user_name" value="<?php echo $user_name; ?>"><br><br>
         
         <label for="user_picture">プロフィール画像:</label><br>
-        <input type="file" id="user_picture" name="user_picture" accept="image/*" onchange="previewImage(event)"><br><br>
-
+        <input type="file" id="user_picture" name="user_picture" accept="image/*" onchange="previewImage(event)"><br><br> 
+    </div>
+    <div class="r">
         <div class="preview">
             <img id="profilePicturePreview" src="<?php echo $user_picture; ?>" alt="プレビュー画像">
         </div><br>
-
         <button type="submit">更新</button>
     </form>
 
     <form action="mypage.php" method="post">
-        <button type="submit">キャンセル</button>
+        <button class="btn_03" type="submit">キャンセル</button>
     </form>
+</div>
 </body>
 </html>

@@ -2,11 +2,13 @@ body {
   background: linear-gradient(106deg, #6fad44, #34c2db);
   font-family: 'Helvetica Neue', sans-serif;
 }
-
 .p {
   margin-left: 5%;
 }
-
+.r{
+  margin-left: 45%;
+  margin-bottom: 8%;
+}
 .profile {
   display: flex;
   align-items: center;
@@ -24,6 +26,7 @@ body {
 .profile h2 {
   margin: 0;
 }
+
 .btn {
 	text-align: center;
 	vertical-align: middle;
@@ -75,12 +78,39 @@ body {
 	50% {opacity: 1;}
 	to {opacity: 0;left: 100%;}
 }
+
+.btn_03 {
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+	width: 120px;
+	margin-top: 5%;
+	font-weight: bold;
+	border: 2px solid #27acd9;
+	color: #27acd9;
+	transition: 0.5s;
+}
+.btn_03:hover {
+	color: #fff;
+	background: #27acd9;
+}
+.s{
+  padding-top: 3%;
+	text-align: center;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.29);
+}
 .container {
   display: flex;
   justify-content: center; /* 中央に配置します */
   flex-wrap: wrap;
   padding: 10px;
   margin-top: 2%;
+  margin-bottom: 7%;
   margin-left: 10%;
   margin-right: 10%;
   text-align: center;
