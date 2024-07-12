@@ -3,107 +3,116 @@ body {
     font-family: 'Helvetica Neue', sans-serif;
     margin: 0;
     padding: 0;
-  }
-  .logo{
+}
+
+.logo {
     border-radius: 10px;
-  }
-  .container {
+}
+
+.container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-  }
-  
-  h2 {
-    margin-top: 20px;
-    font-size: 20px;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
-  }
-  
-  .container {
     margin-top: 5%;
-    margin-left:20%;
-    margin-right:20%;
-	padding-top: 3%;
-	text-align: center;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-top: 3%;
     background: rgba(255, 255, 255, 0.75);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.29);
+}
 
-      /* max-width: 800px;
-      margin: 0 auto;
-      padding: 20px; */
-  }
-  .gallery {
-      display: grid;
-      gap: 20px;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
-  .gallery-item {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-  }
-  .user-info {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      display: flex;
-      align-items: center;
-      background-color: rgba(255, 255, 255, 0.8);
-      padding: 5px;
-      border-radius: 5px;
-  }
-  .user-icon {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      margin-right: 5px;
-  }
-  .user-name {
-      font-size: 14px;
-      font-weight: bold;
-  }
-  .gallery-item img {
-      width: 100%;
-      display: block;
-  }
-  .post-footer {
-      padding: 10px;
-  }
-  .post-actions {
-      display: flex;
-      align-items: center;
-  }
-  .like-form {
-      margin-right: 10px;
-  }
-  .like-button {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 24px;
-      color: #ccc;
-  }
-  .like-button.liked .fa-heart {
-      color: red;
-  }
-  .like-button .fa-heart {
-      color: #ccc;
-      margin-right: 5px;
-  }
-  .like-button:hover .fa-heart {
-      color: red;
-  }
-  .like-count {
-      margin-left: 5px;
-  }
-  .post-caption {
-      margin-top: 8px;
-      font-size: 14px;
-  }
-  
+h2 {
+    margin-top: 20px;
+    font-size: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.gallery {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 300px; /* ここで高さを統一 */
+    object-fit: cover; /* 画像が切れないように調整 */
+    display: block;
+}
+
+.user-info {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.user-info .user-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.user-info .user-name {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.post-footer {
+    padding: 10px;
+}
+
+.post-actions {
+    display: flex;
+    align-items: center;
+}
+
+.like-form {
+    margin-right: 10px;
+}
+
+.like-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #ccc;
+}
+
+.like-button.liked .fa-heart {
+    color: red;
+}
+
+.like-button .fa-heart {
+    color: #ccc;
+    margin-right: 5px;
+}
+
+.like-button:hover .fa-heart {
+    color: red;
+}
+
+.like-count {
+    margin-left: 5px;
+}
+
+.post-caption {
+    margin-top: 8px;
+    font-size: 14px;
+}

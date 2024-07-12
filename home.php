@@ -39,7 +39,7 @@
                     echo "<span class='user-name'>" . htmlspecialchars($row['user_name']) . "</span>";
                     echo "</div>";
                     echo "<a href='image.php?id=" . htmlspecialchars($row['picture_ID']) . "'>";
-                    echo "<img src='" . htmlspecialchars($row['picture_name']) . "' alt='アップロードされた画像'>";
+                    echo "<img src='" . htmlspecialchars($row['picture_name']) . "' alt='アップロードされた画像'width='700' height='400'>";
                     echo "</a>";
                     echo "<div class='post-footer'>";
                     echo "<div class='post-actions'>";
