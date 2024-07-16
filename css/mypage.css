@@ -2,9 +2,19 @@ body {
   background: linear-gradient(106deg, #6fad44, #34c2db);
   font-family: 'Helvetica Neue', sans-serif;
 }
-.p {
-  margin-left: 5%;
-}
+
+.edit-profile {
+	position: absolute;
+	right: 10px; /* 右端からの距離を調整 */
+	top: 10px;  /* 必要に応じて上からの距離を調整 */
+  }
+  
+  .p {
+	position: relative; /* 親要素に相対位置を設定 */
+	margin-left: 5%;
+	padding-top: 15px; /* 上部に余白を追加 */
+  }
+  
 .r{
   margin-left: 45%;
   margin-bottom: 8%;

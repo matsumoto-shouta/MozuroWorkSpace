@@ -29,8 +29,8 @@
         <img src="<?php echo $user_picture; ?>" alt="ユーザーアイコン">
         <h2><?php echo $user_name; ?></h2>
     </div>
-    <form action="edit_profile.php" method="post">
-        <button class="btn"type="submit">プロフィールを編集</button>
+    <form class="edit-profile" action="edit_profile.php" method="post">
+        <button class="btn" type="submit">プロフィールを編集</button>
     </form>
     </div>
     
