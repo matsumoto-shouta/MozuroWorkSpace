@@ -1,3 +1,12 @@
+@font-face {
+  font-family: Gewest;
+  src: url(../fonts/PlaywriteBEVLG-Regular.ttf) format("truetype");
+}
+
+.banner {
+  font-family: Gwest;
+}
+
 .header {
   height: 50px;
   display: flex;
@@ -9,6 +18,11 @@
 .logo {
   font-weight: 700;
   padding-left: 14px;
+}
+
+.banner{
+  font-family: Gewest;
+  font-size: large;
 }
 
 .hamburger-menu {
