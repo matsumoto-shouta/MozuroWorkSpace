@@ -1,53 +1,50 @@
 <?php
 session_start();
-include('db-connect.php');
+require 'db-connect.php';
 
-// ユーザーIDの取得
-$user_id = isset($_SESSION['UserData']['id']) ? $_SESSION['UserData']['id'] : null;
-
-if ($user_id === null) {
-    die("ユーザーIDが設定されていません。");
-}
-
-// フォームから送信された投稿IDを取得
-if (isset($_POST['up_ID'])) {
-    $up_ID = $_POST['up_ID'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['picture_id']) && isset($_SESSION['UserData']['id'])) {
+    $picture_id = htmlspecialchars($_POST['picture_id']);
+    $user_id = $_SESSION['UserData']['id'];
 
     try {
-        // 投稿が現在のユーザーのものであることを確認
-        $stmt = $pdo->prepare('SELECT * FROM Upload WHERE up_ID = ? AND user_ID = ?');
-        $stmt->execute([$up_ID, $user_id]);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // トランザクション開始
+        $pdo->beginTransaction();
+
+        // ユーザーが投稿したものか確認
+        $stmt = $pdo->prepare("SELECT user_ID FROM Upload WHERE picture_ID = ? AND user_ID = ?");
+        $stmt->execute([$picture_id, $user_id]);
         $upload = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($upload) {
-            // 投稿が存在し、ユーザーが所有している場合、削除を実行
-            $pdo->beginTransaction();
-            
-            // コメントの削除
-            $stmt = $pdo->prepare('DELETE FROM Comments WHERE comments_ID = ?');
-            $stmt->execute([$up_ID]);
+            // 投稿を削除
+            $stmt = $pdo->prepare("DELETE FROM Upload WHERE picture_ID = ?");
+            $stmt->execute([$picture_id]);
 
-            // 投稿の削除
-            $stmt = $pdo->prepare('DELETE FROM Upload WHERE up_ID = ?');
-            $stmt->execute([$up_ID]);
+            // 関連するコメントも削除
+            $stmt = $pdo->prepare("DELETE FROM Comments WHERE picture_ID = ?");
+            $stmt->execute([$picture_id]);
 
+            // トランザクションをコミット
             $pdo->commit();
 
-            // 削除後、成功メッセージを表示するためにセッションに保存
-            $_SESSION['success_message'] = "投稿が削除されました。";
+            // 削除が完了した後、リダイレクト
+            header("Location: home.php");
+            exit();
         } else {
-            $_SESSION['error_message'] = "不正な操作が検出されました。";
+            // ユーザーが投稿していない場合、エラーメッセージを表示
+            echo "この投稿を削除する権限がありません。";
+            exit();
         }
-        
-        header('Location: mypage.php');
-        exit();
-    } catch (PDOException $e) {
+    } catch (Exception $e) {
+        // エラーが発生した場合、ロールバック
         $pdo->rollBack();
-        echo '削除中にエラーが発生しました: ' . $e->getMessage();
+        echo "投稿の削除中にエラーが発生しました: " . $e->getMessage();
+        exit();
     }
 } else {
-    // 投稿IDが送信されていない場合のエラー処理
-    echo "削除する投稿が選択されていません。";
+    echo "不正なリクエストです。";
+    exit();
 }
 ?>
-a
