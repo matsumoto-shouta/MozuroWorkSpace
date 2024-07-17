@@ -5,8 +5,9 @@ body {
 
 .edit-profile {
 	position: absolute;
-	right: 10px; /* 右端からの距離を調整 */
-	top: 10px;  /* 必要に応じて上からの距離を調整 */
+	right: 130px; /* 右端からの距離を調整 */
+	top: 100px;  /* 必要に応じて上からの距離を調整 */
+	padding: 20px 20px; /* ボタンの内側の余白を増やしてサイズを大きく */
   }
   
   .p {
