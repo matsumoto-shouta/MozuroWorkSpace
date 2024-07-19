@@ -61,6 +61,13 @@ require 'db-connect.php';
         button:hover {
             background-color: #c0392b;
         }
+        .back-button {
+            background-color: #3498db;
+            margin-top: 20px;
+        }
+        .back-button:hover {
+            background-color: #2980b9;
+        }
     </style>
 </head>
 <body>
@@ -119,6 +126,8 @@ require 'db-connect.php';
         <?php endif; ?>
 
     <?php endif; ?>
+
+    <button class="back-button" onclick="history.back()">戻る</button>
 </div>
 </body>
 </html>
