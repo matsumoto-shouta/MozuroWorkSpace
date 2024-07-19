@@ -32,6 +32,21 @@ $user_name = htmlspecialchars($user['user_name']);
     <link rel="stylesheet" href="css/profile.css">
     <title><?php echo $user_name; ?>のプロフィール</title>
     <?php require 'hamburger.php'; ?>
+    <style>
+        .back-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .back-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
 </head>
 <body>
     <div class="al">
@@ -73,6 +88,7 @@ $user_name = htmlspecialchars($user['user_name']);
                 }
                 ?>
             </div>
+            <button class="back-button" onclick="history.back()">戻る</button>
         </div>
     </div>
 </body>

@@ -102,7 +102,6 @@ $destination_user = $stmt->fetch(PDO::FETCH_ASSOC);
             margin-bottom: 20px;
         }
         .message-form textarea {
-            
             height: 100px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
@@ -164,6 +163,21 @@ $destination_user = $stmt->fetch(PDO::FETCH_ASSOC);
             color: #666;
             margin-top: 5px;
         }
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -203,6 +217,9 @@ $destination_user = $stmt->fetch(PDO::FETCH_ASSOC);
                 </li>
             <?php endif; ?>
         </ul>
+
+        <!-- ユーザー一覧ページに戻るリンク -->
+        <a href="User_list.php" class="back-button">ユーザー一覧に戻る</a>
     </div>
 </body>
 </html>
