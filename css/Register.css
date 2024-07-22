@@ -1,12 +1,11 @@
 body{
     background: linear-gradient(106deg, #6fad44, #34c2db);
 	font-family: 'Helvetica Neue', sans-serif;
+	margin-bottom: 3%;
     }
 
 h1{
   text-align: center;
-  margin-top:48px;
-  margin-bottom: 24px;
   width: auto;
 }
 
@@ -164,7 +163,10 @@ h1{
 	background: #d4eef7;
 	color: #27acd9;
 }
-
+.group{
+	display: flex;
+	justify-content: space-between;
+}
 /*登録結果*/
 .result{
 	text-align: center;
