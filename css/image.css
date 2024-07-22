@@ -34,8 +34,11 @@ h1 {
 
 .caption {
     font-size: 18px;
+    margin: auto;
     margin-top: 15px;
     color: #555;
+    width: 600px;
+    white-space: pre-wrap;
 }
 .container {
     position: relative;
