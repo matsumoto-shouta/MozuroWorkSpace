@@ -4,7 +4,7 @@
 
 <!-- ハンバーガーメニュー -->
 <header class="header">
-    <div class="logo"><img src="image/instakiro.png" width="48" height="48" style="border-radius: 10px;"></div>
+    <div class="logo"><img src="image/instakiro.png" width="48" height="48" style="margin-top: 10px;border-radius: 10px;"></div>
     <div class="banner"><p>instakilogram</p></div>
     <button class="hamburger-menu" id="js-hamburger-menu">
         <span class="hamburger-menu__bar"></span>
