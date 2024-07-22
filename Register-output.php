@@ -11,7 +11,7 @@
     <div class="result">
     <?php
         $pdo = new PDO($connect, USER, PASS);
-        if(isset($_SESSION['UserData'])){
+        if(isset($_SESSION['UserData']['user_ID'])){
             $id = $_SESSION['UserData']['user_ID'];
             $sql = $pdo->prepare('select * from UserData where user_ID = ? and mail = ?');
             $sql->execute([$id, $_POST['mail']]);
