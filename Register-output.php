@@ -21,33 +21,37 @@
         }
 
         if(empty($sql->fetchAll())){
-            if(empty($_POST['pass'])){
-                echo 'パスワードが未入力です';
+            if(empty($_POST['name'])){
+            echo 'ユーザー名が未入力です';
             }else{
-                if(isset($_SESSION['UserData'])){
-                    $sql = $pdo->prepare('insert into UserData(user_ID, user_name, mail, pass) values(?,?,?,?)');
-                    $sql->execute([$id,
-                                    $_POST['user_name'],
-                                    $_POST['mail'],
-                                    $_POST['pass']
-                                ]);
-
-                    $_SESSION['UserData'] = [
-                        'user_ID' => $id,
-                        'user_name' => $_POST['user_name'],
-                    'mail' => $_POST['mail']
-                    ];
-                    
-                    echo 'ユーザー情報を更新しました';
+                if(empty($_POST['pass'])){
+                    echo 'パスワードが未入力です';
                 }else{
-                    $sql = $pdo->prepare('insert into UserData(user_name, mail, pass) values(?,?,?)');
-                    $sql->execute([
-                        $_POST['user_name'],
-                        $_POST['mail'],
-                        $_POST['pass']
-                    ]);
+                    if(isset($_SESSION['UserData'])){
+                        $sql = $pdo->prepare('insert into UserData(user_ID, user_name, mail, pass) values(?,?,?,?)');
+                        $sql->execute([$id,
+                                        $_POST['user_name'],
+                                        $_POST['mail'],
+                                        $_POST['pass']
+                                    ]);
 
-                    echo 'ユーザー情報を登録しました';
+                        $_SESSION['UserData'] = [
+                            'user_ID' => $id,
+                            'user_name' => $_POST['user_name'],
+                        'mail' => $_POST['mail']
+                        ];
+                        
+                        echo 'ユーザー情報を更新しました';
+                    }else{
+                        $sql = $pdo->prepare('insert into UserData(user_name, mail, pass) values(?,?,?)');
+                        $sql->execute([
+                            $_POST['user_name'],
+                            $_POST['mail'],
+                            $_POST['pass']
+                        ]);
+
+                        echo 'ユーザー情報を登録しました';
+                    }
                 }
             }
         }else{
