@@ -21,7 +21,7 @@
         }
 
         if(empty($sql->fetchAll())){
-            if(empty($_POST['name'])){
+            if(empty($_POST['user_name'])){
             echo 'ユーザー名が未入力です';
             }else{
                 if(empty($_POST['pass'])){
