@@ -120,6 +120,45 @@ h1{
 	background: #d4eef7;
 	color: #27acd9;
 }
+.bbtn {
+    text-align: center;
+    text-decoration: none;
+    width: 200px;
+    margin: auto;
+    margin-bottom: 24px;
+    padding: 1rem 4rem;
+    font-weight: bold;
+    background: #eee;
+    color: #27acd9;
+    border-radius: 100vh;
+    position: relative;
+    transition: 0.5s;
+}
+.bbtn::before {
+    content: '';
+    position: absolute;
+    top: calc(50% - 2px);
+    left: 1em; /* 右から左に変更 */
+    transform: translateY(calc(-50% - 2px)) rotate(-45deg); /* 回転角度を-45度に変更 */
+    width: 10px;
+    height: 1px;
+    background: #27acd9;
+}
+.bbtn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 1em; /* 右から左に変更 */
+    transform: translateY(-50%);
+    width: 50px;
+    height: 1px;
+    background-color: #27acd9;
+}
+.bbtn:hover {
+    background: #d4eef7;
+    color: #27acd9;
+}
+
 
 /*登録後のボタンデザイン*/
 .btn2 {

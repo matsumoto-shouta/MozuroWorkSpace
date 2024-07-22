@@ -15,7 +15,7 @@
             <input type="password" class="content" name="pass" placeholder="パスワード">
         </div>
         <div class="group">
-            <button class="btn" type="button" onclick="window.location.href='login_input.php'">戻る</button>
+            <button class="bbtn" type="button" onclick="window.location.href='login_input.php'">戻る</button>
             <button class="btn" type="submit">登録</button>
         </div>
     </form>
