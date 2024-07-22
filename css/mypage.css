@@ -5,9 +5,8 @@ body {
 
 .edit-profile {
 	position: absolute;
-	right: 130px; /* 右端からの距離を調整 */
+	right: 160px; /* 右端からの距離を調整 */
 	top: 100px;  /* 必要に応じて上からの距離を調整 */
-	padding: 20px 20px; /* ボタンの内側の余白を増やしてサイズを大きく */
   }
   
   .p {
@@ -49,7 +48,7 @@ body {
 	letter-spacing: 2px;
 	background: transparent;
 	color: #000000;
-  background-color: #fff;
+  	background-color: #fff;
 	overflow: hidden;
 	-webkit-transition: all 0.2s ease-in;
 	-moz-transition: all 0.2s ease-in;
