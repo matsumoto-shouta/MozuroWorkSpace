@@ -16,8 +16,8 @@
             $sql = $pdo->prepare('select * from UserData where user_ID = ? and mail = ?');
             $sql->execute([$id, $_POST['mail']]);
         }else{
-            $sql = $pdo->prepare('select * from UserData where mail =?');
-            $sql->execute([$_POST['mail']]);
+            $sql = $pdo->prepare('select * from UserData where mail =? and password = ?');
+            $sql->execute([$_POST['mail']], $_POST['password']);
         }
 
         if(empty($sql->fetchAll())){
