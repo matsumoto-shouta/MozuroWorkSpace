@@ -3,8 +3,8 @@
 <img class="main-image" src="image/instakiro.png" width="100" height="100">
 <form action="login_output.php" method="post">
     <div class="form-group">
-        <input type="text"  class="content" name="login" placeholder="ユーザーネーム">
-        <input type="password" class="content" name="password" placeholder="パスワード">
+        <input type="email"  class="input-field" name="login" placeholder="メールアドレス">
+        <input type="password" class="input-field" name="password" placeholder="パスワード">
     </div>
     <button class="btn" type="submit">ログイン</button>
 </form>

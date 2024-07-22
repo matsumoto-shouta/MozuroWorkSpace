@@ -3,11 +3,13 @@
 body{
 	background: linear-gradient(106deg, #6fad44, #34c2db);
 	font-family: 'Helvetica Neue', sans-serif;
+	padding-top: 3%;
 }
+
 /*白い枠*/
-.all{
-    margin-left:20%;
-    margin-right:20%;
+.all, .al{
+    margin-left: 20%;
+    margin-right: 20%;
 	padding-top: 3%;
 	text-align: center;
     background: rgba(255, 255, 255, 0.75);
@@ -16,82 +18,49 @@ body{
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.29);
-
-}
-.al{
-	margin-top: 5%;
-    margin-left:20%;
-    margin-right:20%;
-	padding-top: 3%;
-	text-align: center;
-    background: rgba(255, 255, 255, 0.75);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.29);
-
+    margin-top: 5%;
 }
 
+/* form-groupの中央配置 */
 .form-group {
-    display:flex;
-    flex-flow: column;
-  }
-  .content {
-    padding:1em;
-    margin:10%;
-    width:50%;
-  }
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 子要素を中央に配置 */
+    width: 80%; /* 親要素の幅を指定 */
+    margin: 0 auto; /* 左右中央に配置 */
+    padding: 20px 0; /* 上下のパディングを調整 */
+}
 
-  /*textboxの装飾*/
-  .form-group {
-	display: flex;
-	flex-flow: column;
-	width: 80%;
-	margin: 40px 3%;
-	margin-top:20px;
-  justify-content: center;
+/* 入力フィールドのスタイル */
+.input-field {
+    font: 18px/28px sans-serif; /* フォントサイズと行間を大きく設定 */
+    box-sizing: border-box;
+    width: 100%; /* フィールドの幅を最大に設定 */
+    max-width: 400px; /* 最大幅を設定して大きすぎないようにする */
+    padding: 1em; /* パディングを増やして入力エリアを広げる */
+    margin-bottom: 24px;
+    transition: 0.3s;
+    letter-spacing: 1px;
+    color: #000000;
+    border: 2px solid #1b2538; /* ボーダーを太くして目立たせる */
+    background: #f5f5f5; /* 背景色を変更して視認性を向上 */
+    border-radius: 8px; /* ボーダーを少し丸くする */
 }
-.form-group input[type='text'] {
-	font: 15px/24px sans-serif;
-	box-sizing: border-box;
-	width: 100%;
-	padding: 0.3em;
-	margin-bottom:24px;
-	transition: 0.3s;
-	letter-spacing: 1px;
-	color: #000000;
-	border: none;
-	border-bottom: 2px solid #1b2538;
-	background: transparent;
+
+.input-field:focus {
+    border-color: #da3c41; /* フォーカス時のボーダーカラー */
+    outline: none;
+    background: #ffffff; /* フォーカス時の背景色 */
 }
-.content input[type='text']:focus {
-	border-bottom: 2px solid #da3c41;   
-	outline: none;
-}
-.form-group input[type='password'] {
-	font: 15px/24px sans-serif;
-	box-sizing: border-box;
-	width: 100%;
-	padding: 0.3em;
-	margin-bottom:24px;
-	transition: 0.3s;
-	letter-spacing: 1px;
-	color: #000000;
-	border: none;
-	border-bottom: 2px solid #1b2538;
-	background: transparent;
-}
-.content input[type='password']:focus {
-	border-bottom: 2px solid #da3c41;
-	outline: none;
-}
+
+
+
 body{
 	padding-top: 3%;
 }
 
 /*ボタンデザイン*/
-.btn {
+.btn, .btn2, .btn3 {
 	display: flex;
     justify-content: space-between;
     align-items: center;
@@ -99,17 +68,21 @@ body{
 	text-decoration: none;
 	width: 200px;
 	margin: auto;
-    margin-top:24px;
-	margin-bottom:24px;
+    margin-top: 24px;
+	margin-bottom: 24px;
 	padding: 1rem 4rem;
 	font-weight: bold;
 	background: #eee;
-	color: #62d927;
 	border-radius: 100vh;
 	position: relative;
 	transition: 0.5s;
 }
-.btn::before {
+
+.btn {
+	color: #62d927;
+}
+
+.btn::before, .btn2::before, .btn3::before {
 	content: '';
 	position: absolute;
 	top: calc(50% - 2px);
@@ -117,9 +90,9 @@ body{
 	transform: translateY(calc(-50% - 2px)) rotate(45deg);
 	width: 10px;
 	height: 1px;
-	background: #62d927;
 }
-.btn::after {
+
+.btn::after, .btn2::after, .btn3::after {
 	content: '';
 	position: absolute;
 	top: 50%;
@@ -127,104 +100,51 @@ body{
 	transform: translateY(-50%);
 	width: 50px;
 	height: 1px;
-	background-color: #62d927;
 }
+
+.btn::before, .btn::after {
+	background: #62d927;
+}
+
 .btn:hover {
 	background: #e4f7d4;
 	color: #62d927;
 }
 
-/* 新規登録用ボタンデザイン */
 .btn2 {
-	display: flex;
-    justify-content: space-between;
-    align-items: center;
-	text-align: center;
-	text-decoration: none;
 	width: 270px;
-	margin: auto;
-	margin-bottom:24px;
-	padding: 1rem 4rem;
-	font-weight: bold;
-	background: #eee;
 	color: #d9d627;
-	border-radius: 100vh;
-	position: relative;
-	transition: 0.5s;
 }
-.btn2::before {
-	content: '';
-	position: absolute;
-	top: calc(50% - 2px);
-	right: 1em;
-	transform: translateY(calc(-50% - 2px)) rotate(45deg);
-	width: 10px;
-	height: 1px;
+
+.btn2::before, .btn2::after {
 	background: #d9d627;
 }
-.btn2::after {
-	content: '';
-	position: absolute;
-	top: 50%;
-	right: 1em;
-	transform: translateY(-50%);
-	width: 50px;
-	height: 1px;
-	background-color: #d9d627;
-}
+
 .btn2:hover {
 	background: #f7f7d4;
 	color: #d9d627;
 }
 
 /* Login_outputのデザイン */
-
 body{
-	margin:auto;
+	margin: auto;
 	text-align: center;
 }
 
 .btn3 {
-	display: flex;
-    justify-content: space-between;
-    align-items: center;
-	text-align: center;
-	text-decoration: none;
 	width: 270px;
-	margin: auto;
-	margin-bottom:24px;
-	padding: 1rem 4rem;
-	font-weight: bold;
-	background: #eee;
 	color: #275cd9;
-	border-radius: 100vh;
-	position: relative;
-	transition: 0.5s;
 }
-.btn3::before {
-	content: '';
-	position: absolute;
-	top: calc(50% - 2px);
-	right: 1em;
-	transform: translateY(calc(-50% - 2px)) rotate(45deg);
-	width: 10px;
-	height: 1px;
+
+.btn3::before, .btn3::after {
 	background: #275cd9;
 }
-.btn3::after{
-	content: '';
-	position: absolute;
-	top: 50%;
-	right: 1em;
-	transform: translateY(-50%);
-	width: 50px;
-	height: 1px;
-	background-color: #275cd9;
-}
+
 .btn3:hover {
 	background: #d4d7f7;
 	color: #275cd9;
 }
+
 img{
 	border-radius: 10px;
 }

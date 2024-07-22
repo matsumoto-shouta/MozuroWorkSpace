@@ -8,7 +8,7 @@
 <?php 
 unset($_SESSION['UserData']);
 if($_POST['password'] != null && $_POST['login'] != null){
-$sql = $pdo->prepare('select * from UserData where user_name=?');
+$sql = $pdo->prepare('select * from UserData where mail=?');
 $sql->execute([$_POST['login']]);
 
 foreach($sql as $row){
@@ -36,14 +36,14 @@ if(isset($_SESSION['UserData'])){
     echo '</div>';
 
 }else{
-    echo '<p class="log">ログイン名またはパスワードが違います。</p>';
+    echo '<p class="log">メールアドレスまたはパスワードが違います。</p>';
     echo '<form action="login_input.php" method="post">';
     echo '<button class="btn3" type="submit">ログイン画面へ</button>';
     echo '</form>';
     echo '</div>';
 }
 }else{
-    echo '<p class="log">ログイン名またはパスワードを入力してください。</p>';
+    echo '<p class="log">メールアドレスまたはパスワードを入力してください。</p>';
     echo '<form action="login_input.php" method="post">';
     echo '<button class="btn3" type="submit">ログイン画面へ</button>';
     echo '</form>';

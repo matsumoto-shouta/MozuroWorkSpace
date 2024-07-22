@@ -1,7 +1,6 @@
 <?php
 session_start();
 require 'db-connect.php';
-require "hamburger.php";
 
 // コメントが投稿された場合の処理
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && isset($_POST['picture_id']) && isset($_SESSION['UserData']['id'])) {
@@ -32,6 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
         exit();
     }
 }
+
+// 出力バッファリングを開始
+ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -91,6 +93,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
         button:hover {
             background-color: #c0392b;
         }
+
+        .button-group {
+        display: flex; /* 横並びにするために flexbox を使用 */
+        gap: 10px; /* ボタン間のスペースを調整 */
+        margin-bottom: 20px; /* ボタングループの下に余白を追加 */
+        }
+
+        .button-group button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .button-group button:hover {
+            background-color: #c0392b;
+        }
         .canvas-container {
             position: absolute;
             top: 0;
@@ -117,8 +139,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
 </head>
 <body>
 <div class="container">
-    <div>
+    <div class="button-group">
         <button id="toggleComments">コメントを非表示</button>
+        <a href="home.php">
+            <button>ホームに戻る</button>
+        </a>
     </div>
 
     <?php
@@ -154,10 +179,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
             if (isset($_SESSION['UserData']['id'])) {
                 echo "<div class='comment-form'>";
                 echo "<h3>コメントを追加</h3>";
-                echo "<form action='image.php' method='post'>";
+                echo "<form id='commentForm' action='image.php' method='post'>";
                 echo "<input type='hidden' name='picture_id' value='" . htmlspecialchars($picture_id) . "'>";
-                echo "<textarea name='comments_text' rows='4' cols='50' required></textarea><br>";
+                echo "<textarea id='comments_text' name='comments_text' rows='4' cols='50' required></textarea><br>";
                 echo "<input type='submit' value='コメントを追加'>";
+                echo "<p id='error-message' class='error-message' style='display: none;'>コメントは50文字以下でなければなりません。</p>";
                 echo "</form>";
                 echo "</div>";
             } else {
@@ -190,6 +216,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
     }
     ?>
     </div>
+    
+    <script>
+    document.getElementById('commentForm').addEventListener('submit', function(event) {
+        var commentsText = document.getElementById('comments_text').value;
+        var errorMessage = document.getElementById('error-message');
+
+        // 50文字を超えた場合のチェック
+        if (commentsText.length > 50) {
+            // エラーメッセージを表示
+            errorMessage.style.display = 'block';
+            event.preventDefault(); // フォームの送信を防ぐ
+        } else {
+            // エラーメッセージを非表示
+            errorMessage.style.display = 'none';
+        }
+    });
+</script>
+
+
     <!-- コメントをニコニコ動画風に流すスクリプト -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -242,3 +287,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comments_text']) && i
 </div>
 </body>
 </html>
+
+<?php
+// 出力バッファリングを終了し、バッファの内容を表示
+ob_end_flush();
+?>
