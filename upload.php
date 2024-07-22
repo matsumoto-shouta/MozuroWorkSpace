@@ -2,6 +2,7 @@
 session_start();
 ob_start();
 header('Content-Type: text/html; charset=utf-8');
+require 'db-connect.php';
 
 // エラーメッセージを初期化
 $error = '';

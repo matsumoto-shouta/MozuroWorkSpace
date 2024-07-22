@@ -10,37 +10,46 @@ if (!isset($_SESSION['UserData']['id']) || !isset($_GET['user_id'])) {
 $current_user_id = $_SESSION['UserData']['id'];
 $destination_user_id = $_GET['user_id'];
 
+// エラーメッセージを初期化
+$error_message = '';
+
 // メッセージ送信処理
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $text = $_POST['text'];
+    $text = trim($_POST['text']);
     $imagePath = NULL;
 
-    // 画像のアップロード処理
-    // if (isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
-    //     $uploadDir = 'uploads/';
-    //     $uploadFile = $uploadDir . basename($_FILES['image']['name']);
-    //     $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
-    //     $allowedTypes = ['jpg', 'jpeg', 'png', 'gif'];
+    // メッセージが空でないかチェック
+    if (empty($text)) {
+        $error_message = 'メッセージを入力してください。';
+    } else {
+        // 画像のアップロード処理
+        // if (isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
+        //     $uploadDir = 'uploads/';
+        //     $uploadFile = $uploadDir . basename($_FILES['image']['name']);
+        //     $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
+        //     $allowedTypes = ['jpg', 'jpeg', 'png', 'gif'];
 
-    //     // 画像のサイズと種類の検証
-    //     if (in_array($imageFileType, $allowedTypes) && $_FILES['image']['size'] < 5000000) { // 5MB以下
-    //         if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile)) {
-    //             $imagePath = $uploadFile;
-    //         }
-    //     }
-    // }
+        //     // 画像のサイズと種類の検証
+        //     if (in_array($imageFileType, $allowedTypes) && $_FILES['image']['size'] < 5000000) { // 5MB以下
+        //         if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile)) {
+        //             $imagePath = $uploadFile;
+        //         }
+        //     }
+        // }
 
-    $sql = "INSERT INTO message (text, image, user_id, destination_user_id) VALUES (:text, :image, :user_id, :destination_user_id)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':text', $text, PDO::PARAM_STR);
-    $stmt->bindParam(':image', $imagePath, PDO::PARAM_STR);
-    $stmt->bindParam(':user_id', $current_user_id, PDO::PARAM_INT);
-    $stmt->bindParam(':destination_user_id', $destination_user_id, PDO::PARAM_INT);
-    $stmt->execute();
+        // メッセージの保存
+        $sql = "INSERT INTO message (text, image, user_id, destination_user_id) VALUES (:text, :image, :user_id, :destination_user_id)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':text', $text, PDO::PARAM_STR);
+        $stmt->bindParam(':image', $imagePath, PDO::PARAM_STR);
+        $stmt->bindParam(':user_id', $current_user_id, PDO::PARAM_INT);
+        $stmt->bindParam(':destination_user_id', $destination_user_id, PDO::PARAM_INT);
+        $stmt->execute();
 
-    // リダイレクトしてフォームの再送信を防ぐ
-    header("Location: dm.php?user_id=" . $destination_user_id);
-    exit;
+        // リダイレクトしてフォームの再送信を防ぐ
+        header("Location: dm.php?user_id=" . $destination_user_id);
+        exit;
+    }
 }
 
 // メッセージ取得
@@ -178,6 +187,11 @@ $destination_user = $stmt->fetch(PDO::FETCH_ASSOC);
         .back-button:hover {
             background-color: #0056b3;
         }
+        .error-message {
+            color: red;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
@@ -188,6 +202,11 @@ $destination_user = $stmt->fetch(PDO::FETCH_ASSOC);
             <img src="<?php echo htmlspecialchars($destination_user['user_picture']); ?>" alt="ユーザーアイコン">
             <h2><?php echo htmlspecialchars($destination_user['user_name']); ?></h2>
         </div>
+
+        <!-- エラーメッセージの表示 -->
+        <?php if (!empty($error_message)): ?>
+            <div class="error-message"><?php echo htmlspecialchars($error_message); ?></div>
+        <?php endif; ?>
 
         <form class="message-form" action="" method="post" enctype="multipart/form-data">
             <textarea name="text" placeholder="メッセージを入力してください"></textarea>
