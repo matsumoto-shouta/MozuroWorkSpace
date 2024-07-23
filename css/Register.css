@@ -1,218 +1,189 @@
-body{
+/* 共通のスタイル設定 */
+body {
     background: linear-gradient(106deg, #6fad44, #34c2db);
-	font-family: 'Helvetica Neue', sans-serif;
-	margin-bottom: 3%;
-    }
-
-h1{
-  text-align: center;
-  width: auto;
+    font-family: 'Helvetica Neue', sans-serif;
+    margin-bottom: 3%;
 }
 
 /*白い枠*/
-.all{
-    margin-left:20%;
-    margin-right:20%;
-	padding-top: 3%;
-	text-align: center;
+.all, .al {
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-top: 3%;
+    text-align: center;
     background: rgba(255, 255, 255, 0.75);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.29);
-
-
+    margin-top: 5%;
 }
 
+h1 {
+    text-align: center;
+    width: auto;
+}
+
+/* form-groupの中央配置 */
 .form-group {
-    display:flex;
-    flex-flow: column;
-  }
-  .content {
-    padding:1em;
-    margin:10%;
-    width:50%;
-  }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
 
-/*textboxの装飾*/
-  .form-group {
-	display: flex;
-	flex-flow: column;
-	width: 80%;
-	margin: 40px 3%;
-  justify-content: center;
+/* 入力フィールドのスタイル */
+.input-field, .form-group input[type='text'], .form-group input[type='password'] {
+    font: 18px/28px sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 400px;
+    padding: 1em;
+    margin-bottom: 24px;
+    transition: 0.3s;
+    letter-spacing: 1px;
+    color: #000000;
+    border: 2px solid #1b2538;
+    background: #f5f5f5;
+    border-radius: 8px;
 }
-.form-group input[type='text'] {
-	font: 15px/24px sans-serif;
-	box-sizing: border-box;
-	width: 100%;
-	padding: 0.3em;
-	margin-bottom:24px;
-	transition: 0.3s;
-	letter-spacing: 1px;
-	color: #000000;
-	border: none;
-	border-bottom: 2px solid #1b2538;
-	background: transparent;
-}
-.content input[type='text']:focus {
-	border-bottom: 2px solid #da3c41;   
-	outline: none;
-}
-.form-group input[type='password'] {
-	font: 15px/24px sans-serif;
-	box-sizing: border-box;
-	width: 100%;
-	padding: 0.3em;
-	margin-bottom:24px;
-	transition: 0.3s;
-	letter-spacing: 1px;
-	color: #000000;
-	border: none;
-	border-bottom: 2px solid #1b2538;
-	background: transparent;
-}
-.content input[type='password']:focus {
-	border-bottom: 2px solid #da3c41;
-	outline: none;
+
+.input-field:focus, .form-group input[type='text']:focus, .form-group input[type='password']:focus {
+    border-color: #da3c41;
+    outline: none;
+    background: #ffffff;
 }
 
 /*ボタンデザイン*/
-.btn {
-	display: flex;
+.btn, .btn2, .btn3, .bbtn {
+    display: flex;
     justify-content: space-between;
     align-items: center;
-	text-align: center;
-	text-decoration: none;
-	width: 200px;
-	margin: auto;
-	margin-bottom:24px;
-	padding: 1rem 4rem;
-	font-weight: bold;
-	background: #eee;
-	color: #27acd9;
-	border-radius: 100vh;
-	position: relative;
-	transition: 0.5s;
-}
-.btn::before {
-	content: '';
-	position: absolute;
-	top: calc(50% - 2px);
-	right: 1em;
-	transform: translateY(calc(-50% - 2px)) rotate(45deg);
-	width: 10px;
-	height: 1px;
-	background: #27acd9;
-}
-.btn::after {
-	content: '';
-	position: absolute;
-	top: 50%;
-	right: 1em;
-	transform: translateY(-50%);
-	width: 50px;
-	height: 1px;
-	background-color: #27acd9;
-}
-.btn:hover {
-	background: #d4eef7;
-	color: #27acd9;
-}
-.bbtn {
     text-align: center;
     text-decoration: none;
     width: 200px;
     margin: auto;
+    margin-top: 24px;
     margin-bottom: 24px;
     padding: 1rem 4rem;
     font-weight: bold;
     background: #eee;
-    color: #27acd9;
     border-radius: 100vh;
     position: relative;
     transition: 0.5s;
 }
+
+.btn {
+    color: #62d927;
+}
+
+.btn::before, .btn2::before, .btn3::before, .bbtn::before {
+    content: '';
+    position: absolute;
+    top: calc(50% - 2px);
+    right: 1em;
+    transform: translateY(calc(-50% - 2px)) rotate(45deg);
+    width: 10px;
+    height: 1px;
+}
+
+.btn::after, .btn2::after, .btn3::after, .bbtn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 1em;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 1px;
+}
+
+.btn::before, .btn::after {
+    background: #62d927;
+}
+
+.btn:hover {
+    background: #e4f7d4;
+    color: #62d927;
+}
+
+.btn2 {
+    width: 270px;
+    color: #d9d627;
+}
+
+.btn2::before, .btn2::after {
+    background: #d9d627;
+}
+
+.btn2:hover {
+    background: #f7f7d4;
+    color: #d9d627;
+}
+
+.btn3 {
+    width: 270px;
+    color: #275cd9;
+}
+
+.btn3::before, .btn3::after {
+    background: #275cd9;
+}
+
+.btn3:hover {
+    background: #d4d7f7;
+    color: #275cd9;
+}
+
+.bbtn {
+    color: #27acd9;
+}
+
 .bbtn::before {
     content: '';
     position: absolute;
     top: calc(50% - 2px);
-    left: 1em; /* 右から左に変更 */
-    transform: translateY(calc(-50% - 2px)) rotate(-45deg); /* 回転角度を-45度に変更 */
+    left: 1em;
+    transform: translateY(calc(-50% - 2px)) rotate(-45deg);
     width: 10px;
     height: 1px;
     background: #27acd9;
 }
+
 .bbtn::after {
     content: '';
     position: absolute;
     top: 50%;
-    left: 1em; /* 右から左に変更 */
+    left: 1em;
     transform: translateY(-50%);
     width: 50px;
     height: 1px;
     background-color: #27acd9;
 }
+
 .bbtn:hover {
     background: #d4eef7;
     color: #27acd9;
 }
 
-
-/*登録後のボタンデザイン*/
-.btn2 {
-	display: flex;
+.group {
+    display: flex;
     justify-content: space-between;
-    align-items: center;
-	text-align: center;
-	text-decoration: none;
-	width: 270px;
-	margin: auto;
-	margin-bottom:24px;
-	padding: 1rem 4rem;
-	font-weight: bold;
-	background: #eee;
-	color: #27acd9;
-	border-radius: 100vh;
-	position: relative;
-	transition: 0.5s;
 }
-.btn2::before {
-	content: '';
-	position: absolute;
-	top: calc(50% - 2px);
-	right: 1em;
-	transform: translateY(calc(-50% - 2px)) rotate(45deg);
-	width: 10px;
-	height: 1px;
-	background: #27acd9;
-}
-.btn2::after {
-	content: '';
-	position: absolute;
-	top: 50%;
-	right: 1em;
-	transform: translateY(-50%);
-	width: 50px;
-	height: 1px;
-	background-color: #27acd9;
-}
-.btn:hover {
-	background: #d4eef7;
-	color: #27acd9;
-}
-.group{
-	display: flex;
-	justify-content: space-between;
-}
-/*登録結果*/
-.result{
-	text-align: center;
-    margin-top:48px;
+
+/* 登録結果 */
+.result {
+    text-align: center;
+    margin-top: 48px;
     margin-bottom: 24px;
-	margin-left: auto;
-	margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
     width: auto;
-	font-size: large;
+    font-size: large;
+}
+
+img {
+    border-radius: 10px;
 }
