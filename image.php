@@ -46,7 +46,6 @@ ob_start();
             font-family: 'Helvetica Neue', sans-serif;
         }
         .container {
-            position: relative;
             width: 600px; /* 画像の幅に合わせて調整 */
             margin: auto; /* 中央に寄せる */
             max-width: 800px;
@@ -69,7 +68,7 @@ ob_start();
             margin-top: 10px;
             font-style: italic;
             color: #555;
-            overflow-wrap:anywhere;
+            overflow-wrap: anywhere;
         }
         .comments {
             margin-top: 20px;
@@ -96,13 +95,13 @@ ob_start();
         }
 
         .button-group {
-        display: flex; /* 横並びにするために flexbox を使用 */
-        gap: 10px; /* ボタン間のスペースを調整 */
-        margin-bottom: 20px; /* ボタングループの下に余白を追加 */
+            display: flex; /* 横並びにするために flexbox を使用 */
+            gap: 300px; /* ボタン間のスペースを調整 */
+            margin-bottom: 20px; /* ボタングループの下に余白を追加 */
         }
 
         .button-group button {
-            background-color: #e74c3c;
+            background-color: #56b491;
             color: white;
             border: none;
             padding: 10px 15px;
@@ -160,9 +159,11 @@ ob_start();
 
         if ($row) {
             echo "<div class='post'>";
-            echo "<h1>" . htmlspecialchars($row['user_name']) . "の画像</h1>";
+            // echo "<h1>" . htmlspecialchars($row['user_name']) . "の画像</h1>";
+            echo "<div style='position:relative;'>";
             echo "<img src='" . htmlspecialchars($row['picture_name']) . "' alt='アップロードされた画像' class='post-image'>";
             echo "<div class='canvas-container' id='canvasContainer'></div>"; // キャンバスコンテナをここに追加
+            echo "</div>";
             echo "<p class='caption'>" . htmlspecialchars($row['caption']) . "</p>";
             echo "</div>";
 
@@ -253,7 +254,7 @@ ob_start();
                 const comments = commentsContainer.querySelectorAll(".comment");
 
                 comments.forEach(comment => {
-                    const commentText = comment.querySelector("strong").textContent.trim() + ' ' + comment.querySelector("p").textContent.trim();
+                    const commentText = comment.querySelector("p").textContent.trim(); // 修正: コメントテキストのみ取得
                     const commentElement = document.createElement("div");
                     commentElement.classList.add("comment-flow");
                     commentElement.textContent = commentText;
