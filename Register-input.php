@@ -11,7 +11,7 @@
     <form action="Register-output.php" method="post">
         <div class="form-group">
             <input type="text" class="input-field" name="user_name" placeholder="ユーザーネーム">
-            <input type="text" class="input-field" name="mail" placeholder="メールアドレス">
+            <input type="email" class="input-field" name="mail" placeholder="メールアドレス">
             <input type="password" class="input-field" name="pass" placeholder="パスワード">
         </div>
         <div class="group">
