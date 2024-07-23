@@ -69,6 +69,7 @@ ob_start();
             margin-top: 10px;
             font-style: italic;
             color: #555;
+            overflow-wrap:anywhere;
         }
         .comments {
             margin-top: 20px;
